@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Styling for the input fields and calculate button */
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        input[type="number"] {
+            width: 40px;
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #calculate, #reset {
+            font-size: 16px;
+            padding: 8px 16px;
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styling for the truth table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Non-Restoring Division Algorithm Calculator</h1>
+        <h2>Enter the numbers to be divided in decimal format.</h2>
+
+        <label for="first">Dividend: </label>
+        <input type="number" id="first">
+        <label for="second">Divisor: </label>
+        <input type="number" id="second">
+        <button id="calculate">Calculate</button>
+
+        <table id="algoTable">
+            <thead>
+                <tr>
+                    <th>Count</th>
+                    <th>M</th>
+                    <th>A</th>
+                    <th>Q</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="algoBody"></tbody>
+        </table>
+        <div id = "result"></div>
+    </div>
+   
+    <div><script>
+        function po(n) {
+    let i = 1;
+    for (let k = 0; k < n; k++) {
+        i = i * 2;
+    }
+    return i;
+}
+
+
+function odd(a) {
+    if (a % 2 === 0) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+function bina(N, Cnt) {
+    let i, j = 1,loop = 1;
+    let ans="";
+    i=N%2;
+        N=Math.floor(N/2);
+            ans="_"+ans;
+    while(N!=0){   
+        i=N%2;
+        N=Math.floor(N/2);
+        ans=String(i)+ans;
+        j+=1;
+    }
+    while(j<=Cnt){
+    ans="0"+ans;
+    j+=1;
+    }
+    return ans;
+}
+
+function binary(N, Cnt) {
+    let i, j = 1;
+    let ans="";
+    while(N!=0){
+        i=N%2;
+        N=Math.floor(N/2);
+        ans=String(i)+ans;
+        j+=1;
+    }
+    while(j<=Cnt){
+    ans="0"+ans;
+    j+=1;
+    }
+    return ans;
+}
+document.getElementById('calculate').addEventListener('click', () =>{
+   
+
+    let Q = parseInt(document.getElementById('first').value);
+    let M = parseInt(document.getElementById('second').value);
+    const algoBody = document.getElementById('algoBody');
+    const result = document.getElementById('result');
+    algoBody.innerHTML = '';
+    result.innerHTML = '';
+
+        let A = 0;;
+        let flag = 0;
+        let n = 0;
+        let b, c, d, e;
+        let nQ, nM;
+        let loop, count = 1, Cnt;
+        let ac,q,r,m;
+   
+
+        while (true) {
+            b = po(n);
+            if (Q >= b) {
+                n += 1;
+                count += 1;
+            } else {
+                break;
+            }
+        }
+   
+        b = po(count - 1);
+        c = po(count);
+        d = c - 1;
+        e = b / 2;
+        f = po(count + 1) - 1;
+  
+        Cnt = count;
+   
+        nM = (d - M) + 1;
+   
+    let Morg = M, Qorg = Q;
+        while (count != 0) {
+           
+            if(count == Cnt){
+                act = "Initialization";
+                ac = binary(A, Cnt);
+                q = binary(Q, Cnt);
+                m = binary(M , Cnt);
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `<td>${count}</td><td>${m}</td><td>${ac}</td><td>${q}</td><td>${act}</td>`;
+                algoBody.appendChild(newRow);
+            }
+
+            A=A*2;
+            Q=Q*2;
+
+            if(A > d){
+                A = A % c
+            }
+            if(Q > d){
+                A = A + 1;
+                Q = Q % c;
+            }
+                act = "Left Shift";
+                ac = binary(A, Cnt);
+                q = bina(Q, Cnt);
+                m = binary(M , Cnt);
+                const newRow1 = document.createElement('tr');
+                newRow1.innerHTML = `<td>${count}</td><td>${m}</td><td>${ac}</td><td>${q}</td><td>${act}</td>`;
+                algoBody.appendChild(newRow1);
+            
+                if(A >= b){
+                    A = A + M;
+                    act="A=A+M"
+                }
+                else{
+                        A = A + nM;
+                        act = "A=A-M"
+
+                }
+
+          if(A > d){
+                A = A % c
+            }
+
+            ac = binary(A, Cnt);
+            q = bina(Q, Cnt);
+            m = binary(M , Cnt);
+
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `<td>${count}</td><td>${m}</td><td>${ac}</td><td>${q}</td><td>${act}</td>`;
+        algoBody.appendChild(newRow);
+
+        if(A >= b){
+            act = "Q[0]=0";
+
+            ac = binary(A, Cnt);
+           q = binary(Q, Cnt);
+        m = binary(M , Cnt);
+
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `<td>${count}</td><td>${m}</td><td>${ac}</td><td>${q}</td><td>${act}</td>`;
+        algoBody.appendChild(newRow);
+        }
+        else{
+            Q = Q + 1;
+            act = "Q[0]=1";
+        ac = binary(A, Cnt);
+        q = binary(Q, Cnt);
+        m = binary(M , Cnt);
+
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `<td>${count}</td><td>${m}</td><td>${ac}</td><td>${q}</td><td>${act}</td>`;
+        algoBody.appendChild(newRow);
+        }
+   
+        count-=1;
+        }
+       
+        if(A >= b){
+                    A = A + M;
+                    if(A > d){
+                A = A % c
+            }
+                }
+       
+        result.innerHTML = `<p> Q = (${Qorg})<sub>10</sub> = (${binary(Qorg,Cnt)})<sub>2</sub><br>
+        M= (${Morg})<sub>10</sub> = (${binary(Morg,Cnt)})<sub>2</sub><br>
+        Quotient = (${Q})<sub>10</sub> = (${q})<sub>2</sub><br>
+        Remainder = (${A})<sub>10</sub> = (${ac})<sub>2</sub>`;
+
+
+    });
+
+    </script>
+    </div>
+</body>
+
+</html>

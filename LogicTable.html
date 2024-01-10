@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Styling for the input fields and calculate button */
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        input[type="number"] {
+            width: 40px;
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #calculate {
+            font-size: 16px;
+            padding: 8px 16px;
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styling for the truth table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Styling for the gate containers */
+        .gate-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gate {
+            width: 100px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .input-circle {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+        }
+
+        .input-circle.input-1 {
+            left: -10px;
+        }
+
+        .output-circle {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            bottom: 0;
+            right: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Logic Gate Simulator</h1>
+
+        <label for="gateSelector">Select a Gate:</label>
+        <select id="gateSelector">
+            <option value="and">AND Gate</option>
+            <option value="or">OR Gate</option>
+            <option value="not">NOT Gate</option>
+            <option value="nor">NOR Gate</option>
+            <option value="xor">XOR Gate</option>
+        </select>
+
+        <label for="inputA">Input A:</label>
+        <input type="number" id="inputA" min="0" max="1" value="0">
+        <label for="inputB">Input B:</label>
+        <input type="number" id="inputB" min="0" max="1" value="0">
+        <button id="calculate">Calculate</button>
+
+        <table id="truthTable">
+            <thead>
+                <tr>
+                    <th>Input A</th>
+                    <th>Input B</th>
+                    <th>Gate</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div id="gateContainer"></div>
+
+        <script>
+            const gateSelector = document.getElementById('gateSelector');
+            const inputA = document.getElementById('inputA');
+            const inputB = document.getElementById('inputB');
+            const calculateButton = document.getElementById('calculate');
+            const truthTableBody = document.querySelector('#truthTable tbody');
+            const gateContainer = document.getElementById('gateContainer');
+            
+            calculateButton.addEventListener('click', () => {
+                const selectedGate = gateSelector.value;
+                const inputValA = parseInt(inputA.value);
+                const inputValB = parseInt(inputB.value);
+                let output=false;
+                let lab = 0;
+            
+                switch (selectedGate) {
+                    case 'and':
+                        output = (inputValA && inputValB);
+                        break;
+                    case 'or':
+                        output = (inputValA || inputValB);
+                        break;
+                    case 'not':
+                        output = !inputValA;
+                        break;
+                    case 'nor':
+                        output = !(inputValA || inputValB);
+                        break;
+                    case 'xor':
+                        output = ((inputValA || inputValB) && !(inputValA && inputValB));
+                        break;
+                    default:
+                        break;
+                }
+
+                if(output){
+                    lab = 1;
+                }
+                else{
+                    lab = 0;
+                }
+
+                if(selectedGate=='not'){
+            
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${inputValA}</td>
+                    <td>-</td>
+                    <td>${selectedGate.toUpperCase()}</td>
+                    <td>${lab}</td>
+                `;
+                truthTableBody.appendChild(newRow);
+            }
+                
+                else{
+                    const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${inputValA}</td>
+                    <td>${inputValB}</td>
+                    <td>${selectedGate.toUpperCase()}</td>
+                    <td>${lab}</td>
+                `;
+                truthTableBody.appendChild(newRow);
+                }});
+        
+            
+            gateSelector.addEventListener('change', () => {
+                gateContainer.innerHTML = '';
+                const selectedGate = gateSelector.value;
+            
+                switch (selectedGate) {
+                    case 'and':
+                        gateContainer.innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate"> <img src="https://www.vedantu.com/question-sets/34cb5291-c2c8-4a5a-9b43-2bcfa76071606917240058642263338.png" alt="unavailble"  width="100" height="100"> 
+                   </div>
+                                <div class="input- input-1"></div>
+                                <div class="input- input-2"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'or':
+                        gateContainer.innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate"><img src="https://www.engineersgarage.com/wp-content/uploads/2019/07/Symbol-OR-Gate.png" alt="unavailble"  width="100" height="100"></div>
+                                <div class="input- input-1"></div>
+                                <div class="input- input-2"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'not':
+                        gateContainer.innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Not-gate-en.svg/1200px-Not-gate-en.svg.png" alt="unavailble"  width="100" height="100"> </div>
+                                    
+                                <div class="input- input-1"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'nor':
+                        gateContainer.innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/NOR_ANSI_Labelled.svg/1200px-NOR_ANSI_Labelled.svg.png" alt="unavailble"  width="100" height="100"> </div>
+                                    </div>
+                                <div class="input-circle input-1"></div>
+                                <div class="input-circle input-2"></div>
+                                <div class="output-circle"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'xor':
+                        gateContainer.innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate"><img src="https://i.stack.imgur.com/Jmxzy.jpg" alt="unavailble"  width="100" height="100"> </div>
+                                    </div>
+                                <div class="input- input-1"></div>
+                                <div class="input- input-2"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    default:
+                        break;
+                }
+            });
+            
+            // Initialize with the default selected gate
+            gateSelector.dispatchEvent(new Event('change'));
+        </script>
+    </div>
+</body>
+</html>
