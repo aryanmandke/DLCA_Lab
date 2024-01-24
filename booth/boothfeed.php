@@ -152,8 +152,8 @@ session_start();
 </head>
 <body>
 <header>
-        <a href="RestoringQuiz.php" class="back-button">Back</a>
-        <h4>Restoring Division Algorithm</h4>
+        <a href="BoothQuiz.php" class="back-button">Back</a>
+        <h4>Booth's Algorithm</h4>
         <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
     </header><main><br><br><br>
 

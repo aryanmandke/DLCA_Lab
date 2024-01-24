@@ -152,8 +152,8 @@ session_start();
 </head>
 <body>
 <header>
-        <a href="RestoringQuiz.php" class="back-button">Back</a>
-        <h4>Restoring Division Algorithm</h4>
+        <a href="LogicQuiz.php" class="back-button">Back</a>
+        <h4>Logic Gates and IC Feedback</h4>
         <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
     </header><main><br><br><br>
 
@@ -177,7 +177,7 @@ session_start();
                     </div>
                 </li><br>
                 <li>
-                    <p>Were you able to understand each steps of the given algorithm?</p>
+                    <p>Were you able to understand each steps of the logic expressions?</p>
                     <input type="radio" name="q2" value="5"> Yes, I understood each step clearly.<br>
                     <input type="radio" name="q2" value="4"> I understood the steps, but some parts were unclear.<br>
                     <input type="radio" name="q2" value="3"> I found it somewhat challenging to understand the steps.<br>
@@ -207,10 +207,13 @@ session_start();
 </main>
 
 <script>
+
+        var radios1 = document.getElementsByName("q1");
+        var radios2 = document.getElementsByName("q2");
+        var radios3 = document.getElementsByName("q3");
+
         function validate() {
-            var radios1 = document.getElementsByName("q1");
-            var radios2 = document.getElementsByName("q2");
-            var radios3 = document.getElementsByName("q3");
+            
             var formValid1 = false;
             var formValid2 = false;
             var formValid3 = false;
@@ -250,6 +253,7 @@ session_start();
 
             return formValid1 && formValid2 && formValid3;
         }
+
     </script>
 </body>
 </html>

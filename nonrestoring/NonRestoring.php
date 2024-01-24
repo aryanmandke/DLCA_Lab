@@ -16,6 +16,7 @@
             background-color: #ffffff;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
+            margin-bottom: 5%;
         }
 
         h1 {
@@ -41,7 +42,7 @@
         padding: 8px;
         text-align: center;
         border: 1px solid #ffffff;
-        width: 15%;
+        width: 200px;
         }
 
         #calculate, #reset {
@@ -68,7 +69,6 @@
             padding: 8px;
             text-align: center;
         }
-
         #check-next,#check-back{
         font-size: 16px;
         padding: 16px;
@@ -84,13 +84,6 @@
         margin-right: 2.5%;
     }
 
-    #con{
-        padding: 8px;
-        text-align: center;
-        border: 1px solid #ffffff;
-        width: 200px;
-        }
-
         th {
             background-color: #333;
             color: #fff;
@@ -100,12 +93,11 @@
             background-color: #f2f2f2;
         }
 
-
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Restoring Division Algorithm Simulation</h1>
+        <h1>Non-Restoring Division Algorithm Simulation</h1>
         <h2>Enter the numbers to be divided in decimal format.</h2>
 
         <label for="first">Dividend: </label>
@@ -155,19 +147,6 @@ function odd(a) {
     }
 }
 
-function buttonEnabled(next){
-        next.disabled = false;
-        next.style.background = "#00904a";
-        next.style.cursor = 'pointer';
-}
-
-function buttondisnabled(next){
-        next.disabled = true;
-        next.style.background = "grey";
-        next.style.cursor = 'default';
-}
-
-
 function bina(N, Cnt) {
     let i, j = 1,loop = 1;
     let ans="";
@@ -203,122 +182,128 @@ function binary(N, Cnt) {
     return ans;
 }
 
-function restoring(M,Q){
-   var deck = 0;
+function nonrestoring(Q,M){
 
-       let A = 0;;
-       let flag = 0;
-       let n = 0;
-       let b, c, d, e;
-       let nQ, nM;
-       let loop, count = 1, Cnt;
-       let ac,q,r,m;
-  
+var deck = 0;
 
-       while (true) {
-           b = po(n);
-           if (Q >= b) {
-               n += 1;
-               count += 1;
-           } else {
-               break;
-           }
-       }
-  
-       b = po(count - 1);
-       c = po(count);
-       d = c - 1;
-       e = b / 2;
-       f = po(count + 1) - 1;
- 
-       Cnt = count;
-  
-       nM = (d - M) + 1;
-  
-   let Morg = M, Qorg = Q;
-       while (count != 0) {
-          
-           if(count == Cnt){
-               act = "Initialization";
-               ac = binary(A, Cnt);
-               q = binary(Q, Cnt);
-               m = binary(M , Cnt);       
-               result[deck]={count,m,ac,q,act};
-               deck +=1;
-           }
+    let A = 0;;
+    let flag = 0;
+    let n = 0;
+    let b, c, d, e;
+    let nQ, nM;
+    let loop, count = 1, Cnt;
+    let ac,q,r,m;
 
-           A=A*2;
-           Q=Q*2;
 
-           if(A > d){
-               A = A % c
-           }
-           if(Q > d){
-               A = A + 1;
-               Q = Q % c;
-           }
-               act = "Left Arithmetic Shift";
-               ac = binary(A, Cnt);
-               q = bina(Q, Cnt);
-               m = binary(M , Cnt);
-               result[deck]={count,m,ac,q,act};
-               deck +=1;
+    while (true) {
+        b = po(n);
+        if (Q >= b) {
+            n += 1;
+            count += 1;
+        } else {
+            break;
+        }
+    }
 
-           A = A + nM
+    b = po(count - 1);
+    c = po(count);
+    d = c - 1;
+    e = b / 2;
+    f = po(count + 1) - 1;
 
-         if(A > d){
-               A = A % c
-           }
+    Cnt = count;
 
-           act = "A = A - M";
-           ac = binary(A, Cnt);
-           q = bina(Q, Cnt);
-           m = binary(M , Cnt);
+    nM = (d - M) + 1;
 
-           result[deck]={count,m,ac,q,act};
-           deck +=1;
-       if(A >= b){
-           A = A - nM;
-           act = "Q[0] = 0, A = A + M";
+let Morg = M, Qorg = Q;
+    while (count != 0) {
+       
+        if(count == Cnt){
+            act = "Initialization";
+            ac = binary(A, Cnt);
+            q = binary(Q, Cnt);
+            m = binary(M , Cnt);
 
-           ac = binary(A, Cnt);
-          q = binary(Q, Cnt);
-       m = binary(M , Cnt);
+                    result[deck]={count,m,ac,q,act};
+                     deck +=1;
+        }
 
-       result[deck]={count,m,ac,q,act};
-       deck +=1;
-       }
-       else{
-           Q = Q + 1;
-           act = "Q[0] = 1";
-       ac = binary(A, Cnt);
+        A=A*2;
+        Q=Q*2;
+
+        if(A > d){
+            A = A % c
+        }
+        if(Q > d){
+            A = A + 1;
+            Q = Q % c;
+        }
+            act = "Left Arithmetic Shift";
+            ac = binary(A, Cnt);
+            q = bina(Q, Cnt);
+            m = binary(M , Cnt);
+            result[deck]={count,m,ac,q,act};
+                     deck +=1;
+            if(A >= b){
+                A = A + M;
+                act="A = A + M"
+            }
+            else{
+                    A = A + nM;
+                    act = "A = A - M"
+
+            }
+
+      if(A > d){
+            A = A % c
+        }
+
+        ac = binary(A, Cnt);
+        q = bina(Q, Cnt);
+        m = binary(M , Cnt);
+
+        result[deck]={count,m,ac,q,act};
+        deck +=1;
+
+    if(A >= b){
+        act = "Q[0] = 0";
+
+        ac = binary(A, Cnt);
        q = binary(Q, Cnt);
-       m = binary(M , Cnt);
+    m = binary(M , Cnt);
 
-       result[deck]={count,m,ac,q,act};
-       deck +=1;
-       }
-  
-       count-=1;
-       }
+    result[deck]={count,m,ac,q,act};
+                     deck +=1;
+    }
+    else{
+        Q = Q + 1;
+        act = "Q[0] = 1";
+    ac = binary(A, Cnt);
+    q = binary(Q, Cnt);
+    m = binary(M , Cnt);
 
-       if(A >= b){
+    result[deck]={count,m,ac,q,act};
+                     deck +=1;
+    }
+
+    count-=1;
+    }
+   
+    if(A >= b){
                 A = A + M;
                 if(A > d){
             A = A % c
         }
-        ac = binary(A, Cnt);
+            
+            ac = binary(A, Cnt);
             act = "A = A + M";
             q = binary(Q, Cnt);
     m = binary(M , Cnt);
-
-       result[deck]={count,m,ac,q,act};
-            }
-
-
-               console.log(result);
+   
+            result[deck]={count,m,ac,q,act};
+    }
+            
 }
-
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -328,27 +313,43 @@ function restoring(M,Q){
     let b = result[cnt].count;
 
     if(b==0){
-        p.innerHTML = `As <b>A</b> is less than zero (as sign bit of A is 1), we add <b>M</b> (Divisor) into <b>A</b>.Thus A → A + M.`;
+        p.innerHTML = `As <b>A</b> is less than zero (as sign bit of A is 1), we add <b>M</b> (Divisor) into <b>A</b>.Thus A → A + M. `
     }
-
+    else{
     switch(a){
         case "A = A - M":p.innerHTML = `${opt[2]}`; break;
+        case "A = A + M":p.innerHTML = `${opt[5]}`; break;
         case "Q[0] = 1":p.innerHTML = `${opt[4]}`; break;
         case "Initialization":p.innerHTML = `${opt[0]}`; break;
         case "Left Arithmetic Shift":p.innerHTML = `${opt[3]}`; break;
-        case "Q[0] = 0, A = A + M":p.innerHTML = `${opt[1]}`; break;
+        case "Q[0] = 0":p.innerHTML = `${opt[1]}`; break;
+    }
     }
 }
 
+function buttonEnabled(next){
+        next.disabled = false;
+        next.style.background = "#00904a";
+        next.style.cursor = 'pointer';
+}
+
+function buttondisnabled(next){
+        next.disabled = true;
+        next.style.background = "grey";
+        next.style.cursor = 'default';
+}
+
 var result = [];
-var opt = ["Initialization","As <b>A</b> is less than zero (as sign bit of A is 1),we assign Q<sub>0</sub> as 0. Additionally we add <b>M</b> (Divisor) into <b>A</b>.Thus, A → A + M. Furthermore we decreement the <b>Count</b> by 1.","Subtracting <b>M</b> (Divisor) from <b>A</b>.Thus, A → A - M.","We perform Left Arithmetic Shift on <b>A</b> and <b>Q</b>.","As <b>A</b> is greater than zero (as sign bit of A is 0),we assign Q<sub>0</sub> as 1. Additionally we decreement the <b>Count</b> by 1."];
+var opt = ["Initialization","As <b>A</b> is less than zero (as sign bit of A is 1),we assign Q<sub>0</sub> as 0. Additionally we decreement the <b>Count</b> by 1.","As <b>A</b> is greater than zero (as sign bit of A is 0), we subtract <b>M</b> (Divisor) from <b>A</b>.Thus, A → A - M.","We perform Left Arithmetic Shift on <b>A</b> and <b>Q</b>.","As <b>A</b> is greater than zero (as sign bit of A is 0),we assign Q<sub>0</sub> as 1.","As <b>A</b> is less than zero (as sign bit of A is 1), we add <b>M</b> (Divisor) into <b>A</b>.Thus, A → A + M."];
+
+
 var cnt = 0;
+const re = document.getElementById('result');
 const button = document.getElementById('calculate');
 const back = document.getElementById('check-back');
 const next = document.getElementById('check-next');
 const p = document.getElementById('comment');
 const ans = document.getElementById('confirm');
-const re = document.getElementById('result');
 var Q,M;
 
 button.addEventListener('click', async () =>{
@@ -362,25 +363,24 @@ button.addEventListener('click', async () =>{
     re.innerHTML = ``;
     cnt = 0;
 
-
     M = parseInt(document.getElementById('first').value);
     Q = parseInt(document.getElementById('second').value);
 
     if (!(isNaN(M) || isNaN(Q))){
-        restoring(Q,M);
+        nonrestoring(M,Q);
         var count = result[0].count;
         ans.innerHTML = '';
         p.innerHTML = '';
+        re.innerHTML = '';
 
         const giv = document.createElement('tr');
-        giv.innerHTML = `<td>${result[cnt].count}</td>
-                    <td>${result[cnt].m}</td>
-                    <td>${result[cnt].ac}</td>
-                    <td>${result[cnt].q}</td>
-                    <td>${result[cnt].act}</td>`;
+        giv.innerHTML = `<td>${result[0].count}</td>
+                    <td>${result[0].m}</td>
+                    <td>${result[0].ac}</td>
+                    <td>${result[0].q}</td>
+                    <td>${result[0].act}</td>`;
         ans.appendChild(giv);
         find_state(cnt);
-        cnt += 1;
 
         button.style.background = "grey";
         button.disabled = true;
@@ -397,7 +397,8 @@ button.addEventListener('click', async () =>{
     }
     });
 
-    next.addEventListener('click', async () => {
+
+next.addEventListener('click', async () => {
         cnt += 1;    
         const giv = document.createElement('tr');
         giv.innerHTML = `<td>${result[cnt].count}</td>
