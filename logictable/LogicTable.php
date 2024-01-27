@@ -95,17 +95,11 @@
         text-align: center;
     }
     
-    #con{
-        padding: 8px;
-        text-align: center;
-        border: 1px solid #ffffff;
-        width: 100px;
-    }
-    
     #algoTable th {
         background-color: #333;
         color: #fff;
         align-items: center;
+        border: 1px solid;
         align-self: center;
     }
     
@@ -122,7 +116,14 @@
     }
 
     #confirm th,td{
-        border: 1px solid black;
+        border: 1px solid #ccc;
+    }
+
+    #con{
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ffffff;
+        width: 100px;
     }
 
     .T{
@@ -138,7 +139,7 @@
         margin: auto;
     }
 
-    #algoBody{
+    #algoBody td,th{
         border: 1px solid #ccc;
         width: 10px;
     }
@@ -210,7 +211,7 @@
                 <td id="g1">-</td>
                 <td id="g2">-</td>
                 <td id="out">-</td>
-            <td id="con"><button id="check" disabled="true" style="background: grey;">Check Answer</button></td>
+            <td id="con" style="border: 0px solid white"><button id="check" disabled="true" style="background: grey;">Check Answer</button></td>
             </tbody>
         </table>
  
@@ -434,12 +435,12 @@
             function confirminsert(inputA,inputB,inputC,gate_1,gate_2,output){
                     row = document.createElement('tr');
                     row.innerHTML = `
-                                    <td>${dash(inputA)}</td>
-                                    <td>${dash(inputB)}</td>
-                                    <td>${dash(inputC)}</td>
-                                    <td>${gate_1}</td>
-                                    <td>${gate_2}</td>
-                                    <td>${output}</td>`;
+                                    <td style="border: 1px solid #ccc">${dash(inputA)}</td>
+                                    <td style="border: 1px solid #ccc">${dash(inputB)}</td>
+                                    <td style="border: 1px solid #ccc">${dash(inputC)}</td>
+                                    <td style="border: 1px solid #ccc">${gate_1}</td>
+                                    <td style="border: 1px solid #ccc">${gate_2}</td>
+                                    <td style="border: 1px solid #ccc">${output}</td>`;
                 Confirm.appendChild(row);
                 out.innerHTML = `${output}`;
             }
