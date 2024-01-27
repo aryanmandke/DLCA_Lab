@@ -298,7 +298,7 @@
 
                 
                 if(!(isNaN(userOutput))){
-                    sim.style.display = 'block';
+                    sim.style.display = 'none';
 
                     gatesdisplay1(inputValA,inputValB,correctOutput1,selectedGate);
                 const newRow = document.createElement('tr');
@@ -319,7 +319,7 @@
 
                 }
 
-                if(count>6){
+                if(count>10){
                     table1.removeChild(table1.firstChild);
                 }
             }
