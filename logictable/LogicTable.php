@@ -370,7 +370,7 @@
                     B1.style.marginTop = "25px";
                     img2.style.paddingTop = "0px";
                     out1.style.paddingTop = "0px";
-                    out1.style.marginTop = "16px";
+                    out1.style.marginTop = "13px";
                     out1.style.marginBottom = "16px";
 
                     C1.style.display = 'none';
