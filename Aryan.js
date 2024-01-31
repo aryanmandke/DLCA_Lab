@@ -1,4 +1,69 @@
-function booth(M,Q){
+        function po(n) {
+            let i = 1;
+            for (let k = 0; k < n; k++) {
+                i = i * 2;
+            }
+            return i;
+        }
+        
+        function ab(c) {
+            if (c >= 0) {
+                return c;
+            } else {
+                return -c;
+            }
+        }
+        
+        function less(c) {
+            if (c < 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        
+        function odd(a) {
+            if (a % 2 === 0) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        
+        function binary(N, Cnt) {
+            let i, j = 1;
+            let ans="";
+            while(N!=0){
+                i=N%2;
+                N=Math.floor(N/2);
+                ans=String(i)+ans;
+                j+=1;
+            }
+            while(j<=Cnt){
+            ans="0"+ans;
+            j+=1;
+            }
+            return ans;
+        }
+        
+        function bina(N, Cnt) {
+            let i, j = 1,loop = 1;
+            let ans="";
+            i=N%2;
+                N=Math.floor(N/2);
+                    ans="_"+ans;
+            while(N!=0){   
+                i=N%2;
+                N=Math.floor(N/2);
+                ans=String(i)+ans;
+                j+=1;
+            }
+            while(j<=Cnt){
+            ans="0"+ans;
+            j+=1;
+            }
+            return ans;
+        }function booth(M,Q){
         
                 let deck = 0;
                 let A = 0;
