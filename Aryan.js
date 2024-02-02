@@ -247,7 +247,7 @@
                 result[deck]={"count":count,"r":r};
         }
 
- function random(){
+ function negrandom(){
             let x = Math.floor(Math.random()*20 - 9);
             let y = Math.floor(Math.random()*20 - 9);
             var list = [];
@@ -270,3 +270,147 @@
         
             return list;
  }
+
+function nonrestoring(Q,M){
+
+var deck = 0;
+
+    let A = 0;;
+    let flag = 0;
+    let n = 0;
+    let b, c, d, e;
+    let nQ, nM;
+    let loop, count = 1, Cnt;
+    let ac,q,r,m;
+
+
+    while (true) {
+        b = po(n);
+        if (Q >= b) {
+            n += 1;
+            count += 1;
+        } else {
+            break;
+        }
+    }
+
+    b = po(count - 1);
+    c = po(count);
+    d = c - 1;
+    e = b / 2;
+    f = po(count + 1) - 1;
+
+    Cnt = count;
+
+    nM = (d - M) + 1;
+
+let Morg = M, Qorg = Q;
+    while (count != 0) {
+       
+        if(count == Cnt){
+            act = "Initialization";
+            ac = binary(A, Cnt);
+            q = binary(Q, Cnt);
+            m = binary(M , Cnt);
+
+                    result[deck]={count,m,ac,q,act};
+                     deck +=1;
+        }
+
+        A=A*2;
+        Q=Q*2;
+
+        if(A > d){
+            A = A % c
+        }
+        if(Q > d){
+            A = A + 1;
+            Q = Q % c;
+        }
+            act = "Left Arithmetic Shift";
+            ac = binary(A, Cnt);
+            q = bina(Q, Cnt);
+            m = binary(M , Cnt);
+            result[deck]={count,m,ac,q,act};
+                     deck +=1;
+            if(A >= b){
+                A = A + M;
+                act="A = A + M"
+            }
+            else{
+                    A = A + nM;
+                    act = "A = A - M"
+
+            }
+
+      if(A > d){
+            A = A % c
+        }
+
+        ac = binary(A, Cnt);
+        q = bina(Q, Cnt);
+        m = binary(M , Cnt);
+
+        result[deck]={count,m,ac,q,act};
+        deck +=1;
+
+    if(A >= b){
+        act = "Q[0] = 0";
+
+        ac = binary(A, Cnt);
+       q = binary(Q, Cnt);
+    m = binary(M , Cnt);
+
+    result[deck]={count,m,ac,q,act};
+                     deck +=1;
+    }
+    else{
+        Q = Q + 1;
+        act = "Q[0] = 1";
+    ac = binary(A, Cnt);
+    q = binary(Q, Cnt);
+    m = binary(M , Cnt);
+
+    result[deck]={count,m,ac,q,act};
+                     deck +=1;
+    }
+
+    count-=1;
+    }
+   
+    if(A >= b){
+                A = A + M;
+                if(A > d){
+            A = A % c
+        }
+            }
+            ac = binary(A, Cnt);
+            act="A = A + M"
+   
+            result[deck]={count,m,ac,q,act};
+            
+}
+
+        function prandom(){
+            let x = Math.floor(Math.random()*10);
+            let y = Math.floor(Math.random()*10);
+            var list = [];
+        
+            while(x==0){
+                x = Math.floor(Math.random()*10);
+            }
+            while(y==0){
+                y = Math.floor(Math.random()*10);
+            }
+        
+            if(Math.abs(x)>Math.abs(y)){
+                list[1] = y;
+                list[0] = x;
+            }
+            else{
+                list[0] = y;
+                list[1] = x;
+            }
+        
+            return list;
+        }
