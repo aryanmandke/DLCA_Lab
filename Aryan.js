@@ -414,3 +414,106 @@ let Morg = M, Qorg = Q;
         
             return list;
         }
+
+        function restoring(Q,M){
+   
+   var deck = 0;
+   var result = [];
+   let A = 0;;
+   let flag = 0;
+   let n = 0;
+   let b, c, d, e;
+   let nQ, nM;
+   let loop, count = 1, Cnt;
+   let ac,q,r,m;
+
+   while (true) {
+       b = po(n);
+       if (Q >= b) {
+           n += 1;
+           count += 1;
+       } else {
+           break;
+       }
+   }
+
+   b = po(count - 1);
+   c = po(count);
+   d = c - 1;
+   e = b / 2;
+   f = po(count + 1) - 1;
+
+   Cnt = count;
+
+   nM = (d - M) + 1;
+
+let Morg = M, Qorg = Q;
+   while (count != 0) {
+      
+       if(count == Cnt){
+           act = "Initialization";
+           ac = binary(A, Cnt);
+           q = binary(Q, Cnt);
+           m = binary(M , Cnt);
+           result[deck]={count,m,ac,q,act};
+           deck +=1;
+       }
+
+       A=A*2;
+       Q=Q*2;
+
+       if(A > d){
+           A = A % c
+       }
+       if(Q > d){
+           A = A + 1;
+           Q = Q % c;
+       }
+           act = "Left Arithmetic Shift";
+           ac = binary(A, Cnt);
+           q = bina(Q, Cnt);
+           m = binary(M , Cnt);
+           result[deck]={count,m,ac,q,act};
+           deck +=1;
+
+       A = A + nM
+
+     if(A > d){
+           A = A % c
+       }
+
+       act = "A = A - M";
+       ac = binary(A, Cnt);
+       q = bina(Q, Cnt);
+       m = binary(M , Cnt);
+
+       result[deck]={count,m,ac,q,act};
+       deck +=1;
+   if(A >= b){
+       A = A - nM;
+       act = "Q[0] = 0, A = A + M";
+
+       ac = binary(A, Cnt);
+      q = binary(Q, Cnt);
+   m = binary(M , Cnt);
+
+   result[deck]={count,m,ac,q,act};
+   deck +=1;
+   }
+   else{
+       Q = Q + 1;
+       act = "Q[0] = 1";
+   ac = binary(A, Cnt);
+   q = binary(Q, Cnt);
+   m = binary(M , Cnt);
+
+   result[deck]={count,m,ac,q,act};
+   deck +=1;
+   }
+
+   count-=1;
+   }
+
+   result[deck]={count,m,ac,q};
+   return result;
+}
