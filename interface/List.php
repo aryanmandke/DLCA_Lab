@@ -26,8 +26,7 @@
 
         header{
             width: 100%;
-            margin: 10px;
-            margin: auto;
+            margin: 0 auto;
             display: flex;
         }
 
