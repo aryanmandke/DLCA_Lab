@@ -77,6 +77,7 @@
         }
         .experiment-container h2 {
             color: #971426;
+            font-weight: bold;
         }
 
         .experiment-container p {
@@ -165,7 +166,7 @@
             <img src="https://kjsit.somaiya.edu.in/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="Logo 1">
             <img src="https://somaiya.com/assets/somaiya_com/img/logo.png" alt="Logo 2">
         </div>
-        <h2>List of Experiments</h2>
+        <h2>List of Experiments</h2><br>
         <ol>
             <li>
                 <a href="../logictable/LogicTheo.php">Logic Gates and IC</a>
