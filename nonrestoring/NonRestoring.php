@@ -377,7 +377,9 @@ button.addEventListener('click', async () =>{
     M = parseInt(document.getElementById('first').value);
     Q = parseInt(document.getElementById('second').value);
 
-    if (!(isNaN(M) || isNaN(Q))){
+    document.getElementById('first').value = M;
+    document.getElementById('second').value = Q;
+    if ((!(isNaN(M) || isNaN(Q))) && (M>=0 && Q>0)){
         nonrestoring(M,Q);
         var count = result[0].count;
         ans.innerHTML = '';
@@ -404,6 +406,18 @@ button.addEventListener('click', async () =>{
         console.log(result);
     }
     else{
+        if(isNaN(M) || M<0){
+            document.getElementById('first').style.backgroundColor="red";
+        }
+        if( isNaN(Q) || Q<1){
+            document.getElementById('second').style.backgroundColor="red";
+        }
+        ans.innerHTML=``;
+        p.innerHTML = ``;
+        await sleep(1000);
+        document.getElementById('second').style.backgroundColor="white";
+        document.getElementById('first').style.backgroundColor="white";
+        
         console.log("Null values detected!");
     }
     });

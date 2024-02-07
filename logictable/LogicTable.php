@@ -139,15 +139,20 @@
     .T{
         display: flex;
         margin: 20px auto;
+        margin-left: 0px;
         user-select: none;
     }
 
     #sim{
-        width: fit-content;
+        width: max-content;
+        height: min-content;
         display: none;
-        padding: 20px;
+        padding: 10px;
         border: 1px solid #ccc;
-        margin: auto;
+        margin: 0px auto;
+        align-items: center;
+        margin-left: 20%;
+        margin-right: 10px;
     }
 
     #algoBody td,th{
@@ -177,6 +182,18 @@
         font-size: 16px;
         padding: 5px;
         border-radius: 16px;
+    }
+
+    #ta{
+        align-items: center;
+        display: none;
+        padding-left: -10px;
+        width: min-content;
+        
+    }
+
+    #ta table{
+        border: 1px solid #CCC;
     }
 
 
@@ -236,6 +253,18 @@
         <div id = "result"></div>
     <div class = "T">
     <div id ="sim"></div>
+    <div id ="ta">
+        <table style="border: 1px solid #ccc;border-collapse: collapse;;padding:1px;margin:0px">
+            <tr>
+                <th style="color:#00904a;padding: 5px;">Green</th>
+                <th style="color:#00904a;padding: 5px;">1</th>
+            </tr>
+            <tr>
+                <th style="color:red;padding: 5px;">Red</th>
+                <th style="color:red;padding: 5px;">0</th>
+            </tr>
+        </table>
+    </div>
     </div>
 
     
@@ -319,6 +348,8 @@
 
         </table>`;
         }
+
+        sim.style.marginLeft="20%";
 
                 var A1 = document.getElementById('A1');
                 var B1 = document.getElementById('B1');
@@ -407,6 +438,8 @@
                 colorchange(B,B1);
                 colorchange(C,C1);
                 colorchange(Output,out1);
+                
+        sim.style.marginLeft="15%";
             }
 
             function colorchange(Aval,A){
@@ -474,6 +507,7 @@
             const button = document.getElementById('reset');
             const check = document.getElementById("check");
             const sim = document.getElementById('sim');
+            const ta = document.getElementById('ta');
 
             const Confirm = document.getElementById('confirm');
             var cnt = 0;
@@ -521,6 +555,11 @@
                     sgate = sgate.toLowerCase();
                 }
                 else{
+
+                inputA = document.getElementById('A');
+                inputB = document.getElementById('B');
+                inputC = document.getElementById('C');
+
                     Confirm.innerHTML = ``;
                     check.disabled = true;
                     Confirm.innerHTML = ``;
@@ -535,10 +574,18 @@
                     flag = true;
                     cnt = 0;
                     sim.style.display = 'none';
+                    ta.style.display = 'none';
+                    inputA.value = 0;
+                    inputB.value = 0;
+                    inputC.value = 0;
                 }
             });
 
-            check.addEventListener('click', () => {
+            function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+            check.addEventListener('click', async () => {
                 inputA = document.getElementById('A');
                 inputB = document.getElementById('B');
                 inputC = document.getElementById('C');
@@ -552,30 +599,85 @@
                 var out = true;
                 const gate = [];
                 sim.style.display = 'none';
+                ta.style.display = 'none';
 
                 if(gate_2 == '-'){
+                    if((inputValA>=0 && inputValA<=1) && (inputValB>=0 && inputValB<=1)){
                     output = gate2(gate_1,inputValA,inputValB);
                     confirminsert(inputA,inputB,inputC,gate_1,gate_2,output);
                     gatesdisplay1(inputValA,inputValB,output,fgate);
+                    sim.style.display = 'block';
+                    ta.style.display = 'block';
+                    }
+                    else{
+                        if(!(inputValA>=0 && inputValA<=1)){
+                            inputA.style.backgroundColor="red";
+                            
+                        }
+
+                        if(!(inputValB>=0 && inputValB<=1)){
+                            inputB.style.backgroundColor="red";
+                        }
+
+                        await sleep(1000);
+                        inputB.style.backgroundColor="white"; inputA.style.backgroundColor="white";
+                    }
 
                 }
                 else{
                     if(gate_2 == 'NOT Gate'){
+                        if((inputValA>=0 && inputValA<=1) && (inputValB>=0 && inputValB<=1)){
                             out = gate2(gate_1,inputValA,inputValB);
                             output = gate3(gate_1,gate_2,inputValA,inputValB,inputValC);
                             gatesdisplay2(inputValA,inputValB,out,inputValC,output,fgate,sgate);
                             confirminsert(inputA,inputB,inputC,gate_1,gate_2,output);
+                            sim.style.display = 'block';
+                            ta.style.display = 'block';
+                        }
+                        else{
+                        if(!(inputValA>=0 && inputValA<=1)){
+                            inputA.style.backgroundColor="red";
+                            
+                        }
+
+                        if(!(inputValB>=0 && inputValB<=1)){
+                            inputB.style.backgroundColor="red";
+                        }
+
+                        await sleep(1000);
+                        inputB.style.backgroundColor="white"; inputA.style.backgroundColor="white";
+                    }
                     }
                     else{
+                        if((inputValA>=0 && inputValA<=1) && (inputValB>=0 && inputValB<=1) && (inputValC<=1 && inputValC>=0)){
                             out = gate2(gate_1,inputValA,inputValB);
                             output = gate3(gate_1,gate_2,inputValA,inputValB,inputValC);
                             gatesdisplay2(inputValA,inputValB,out,inputValC,output,fgate,sgate);
                             confirminsert(inputA,inputB,inputC,gate_1,gate_2,output);
+                            sim.style.display = 'block';
+                            ta.style.display = 'block';
+                        }
+                        else{
+                            if(!(inputValA>=0 && inputValA<=1)){
+                            inputA.style.backgroundColor="red";
+                            
+                        }
+
+                        if(!(inputValB>=0 && inputValB<=1)){
+                            inputB.style.backgroundColor="red";
+                        }
+
+                        if(!(inputValC>=0 && inputValC<=1)){
+                            inputC.style.backgroundColor="red";
+                        }
+
+                        await sleep(1000);
+                        inputB.style.backgroundColor="white"; inputA.style.backgroundColor="white"; inputC.style.backgroundColor="white";
+                        }
                     }
                 }
 
-                sim.style.display = 'block';
-
+               
                 
 
                 console.log(output);

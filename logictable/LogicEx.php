@@ -8,7 +8,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url("../images/wall.jpg") no-repeat center center fixed;
+            background: url("../images/9504928_26768.jpg") no-repeat center center fixed;
+            background-size: 100% 100%;
         }
 
         #container {

@@ -10,7 +10,7 @@
     <title></title>
 
     <style>
-    body {
+   body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -136,10 +136,6 @@
         margin: auto;
     }
 
-    .hin img{
-        height: 75%;
-    }
-    
     #List{
         width: fit-content;
         font-size: 16px;
@@ -162,21 +158,22 @@
 </head>
 <body>
     <div id="container">
-        <h1>Non-Restoring Division Algorithm Excerise</h1>
+        <h1>Booth's Algorithm Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
     <div class="Q">
-        <p>Dividend: <p id = "first"></p></p>
-        <p>Divisor: <p id = "second"></p></p>
+        <p>First Number: <p id = "first"></p></p>
+        <p>Second Number: <p id = "second"></p></p>
         <button id="reset">Get a Question!</button>
         <button id="hint" style="display: none;">Show Flowchart</button>
     </div>
         <table id="algoTable">
             <thead>
                 <tr>
-                <th style="border-left: 1px solid black">Count</th>
+                    <th style="border-left: 1px solid black">Count</th>
                     <th>M</th>
                     <th>AC</th>
                     <th>Q</th>
+                    <th>Q<sub>-1</sub></th>
                     <th style="border-right: 1px solid black">Action</th>
                 </tr>
             </thead>
@@ -185,12 +182,12 @@
                 <td id="M"></td>
                 <td><input type="text" id="AC" required></td>
                 <td><input type="text" id="Q" required></td>
+                <td><input type="number" id="Q1" min="0" max="1" required></td>
                 <td>
                     <select id="List">
                         <option>A = A - M</option>
-                        <option>Q[0] = 0</option>
-                        <option>Q[0] = 1</option>
-                        <option>Left Arithmetic Shift</option>
+                        <option>A = A + M </option>
+                        <option>Right Arithmetic Shift</option>
                     </select>
                 </td>
             <td id="con"><button id="check" disabled="true" style="background: grey;">Check Answer</button></td>
@@ -198,8 +195,8 @@
         </table>
  
         <div id = "result"></div>
-        <div class="mn"style="margin:auto"><div class = "hin"><img src="../images/Flow-Chart-for-Non-Restoring-division.png" height="50%"></div>
-    </div>
+        <div class="mn"style="margin:auto"><div class = "hin"><img src="https://miro.medium.com/v2/resize:fit:1366/1*eZmx_ZWi6VzDVr2ixsPdlQ.png" height = "50%"></div>
+    </div></div>
     
     <div>
         <script>
@@ -235,7 +232,7 @@
             }
         }
         
-          function binary(N, Cnt) {
+        function binary(N, Cnt) {
             let i, j = 1;
             let ans="";
             while(N!=0){
@@ -257,7 +254,6 @@
             i=N%2;
                 N=Math.floor(N/2);
                     ans="_"+ans;
-                    j+=1;
             while(N!=0){   
                 i=N%2;
                 N=Math.floor(N/2);
@@ -271,144 +267,204 @@
             return ans;
         }
         
-function nonrestoring(Q,M){
-
-var deck = 0;
-
-    let A = 0;;
-    let flag = 0;
-    let n = 0;
-    let b, c, d, e;
-    let nQ, nM;
-    let loop, count = 1, Cnt;
-    let ac,q,r,m;
-
-
-    while (true) {
-        b = po(n);
-        if (Q >= b) {
-            n += 1;
-            count += 1;
-        } else {
-            break;
-        }
-    }
-
-    b = po(count - 1);
-    c = po(count);
-    d = c - 1;
-    e = b / 2;
-    f = po(count + 1) - 1;
-
-    Cnt = count;
-
-    nM = (d - M) + 1;
-
-let Morg = M, Qorg = Q;
-    while (count != 0) {
-       
-        if(count == Cnt){
-            act = "Initialization";
-            ac = binary(A, Cnt);
-            q = binary(Q, Cnt);
-            m = binary(M , Cnt);
-
-                    result[deck]={count,m,ac,q,act};
-                     deck +=1;
-        }
-
-        A=A*2;
-        Q=Q*2;
-
-        if(A > d){
-            A = A % c
-        }
-        if(Q > d){
-            A = A + 1;
-            Q = Q % c;
-        }
-            act = "Left Arithmetic Shift";
-            ac = binary(A, Cnt);
-            q = bina(Q, Cnt);
-            m = binary(M , Cnt);
-            result[deck]={count,m,ac,q,act};
-                     deck +=1;
-            if(A >= b){
-                A = A + M;
-                act="A = A + M"
-            }
-            else{
-                    A = A + nM;
-                    act = "A = A - M"
-
-            }
-
-      if(A > d){
-            A = A % c
-        }
-
-        ac = binary(A, Cnt);
-        q = bina(Q, Cnt);
-        m = binary(M , Cnt);
-
-        result[deck]={count,m,ac,q,act};
-        deck +=1;
-
-    if(A >= b){
-        act = "Q[0] = 0";
-
-        ac = binary(A, Cnt);
-       q = binary(Q, Cnt);
-    m = binary(M , Cnt);
-
-    result[deck]={count,m,ac,q,act};
-                     deck +=1;
-    }
-    else{
-        Q = Q + 1;
-        act = "Q[0] = 1";
-    ac = binary(A, Cnt);
-    q = binary(Q, Cnt);
-    m = binary(M , Cnt);
-
-    result[deck]={count,m,ac,q,act};
-                     deck +=1;
-    }
-
-    count-=1;
-    }
-   
-    if(A >= b){
-                A = A + M;
-                if(A > d){
-            A = A % c
-        }
-            }
-            ac = binary(A, Cnt);
-            act="A = A + M"
-   
-            result[deck]={count,m,ac,q,act};
+        function booth(M,Q){
+        
+                let deck = 0;
+                let A = 0;
+                let Q1 = 0;
+                let flag = 0;
+                let n = 0;
+                let b, c, d, e;
+                let Q0 = 0;
+                let abM, abQ;
+                let negQ, negM;
+                let nQ, nM;
+                let loop, count = 1, Cnt;
+                let ac,q,r,m; 
+                let carry;
             
-}
-
+                abM = ab(M);
+                abQ = ab(Q);
+                negM = less(M);
+                negQ = less(Q);
+            
+                while (true) {
+                    b = po(n);
+                    if (abM >= b) {
+                        n += 1;
+                        count += 1;
+                    } else {
+                        break;
+                    }
+                }
+            
+                b = po(count - 1);
+                c = po(count);
+                d = c - 1;
+                e = b / 2;
+                Cnt = count;
+            
+                nM = (d - abM) + 1;
+                nQ = (d - abQ) + 1;
+                let Morg = M, Qorg = Q;
+                if (negM === 1 || negQ === 1) {
+                    if (negM === 1) {
+                        M = nM;
+                    }
+                    if (negQ === 1) {
+                        Q = nQ;
+                    }
+                }
+                let Morg1 = M, Qorg1 = Q;
+                while (count !== 0) {
+                    loop = 0;
+                    flag = odd(Q);
+                    if (flag === 1) {
+                        Q0 = 1;
+                    } else {
+                        Q0 = 0;
+                    }
+                    if(count==Cnt){
+        
+                        ac = binary(A, Cnt);
+                        q = binary(Q, Cnt);
+                        m = binary(M , Cnt);
+                        act="Initialization";
+        
+                        result[deck]={"count":count, "m":m,"ac":ac,"q":q,"Q1":Q1,"act":act};
+                        deck +=1;
+                    }
+            
+                    if (Q1 !== Q0) {
+                        if (Q0 === 1 && Q1 === 0) {
+                            while (loop !== 2) {
+                                if (loop === 0) {
+                                    if (negM === 1) {
+                                        A = A + abM;
+                                    } else {
+                                        A = A + (d - M) + 1;
+                                    }
+            
+                                    if (A > d) {
+                                        A = A % c;
+                                    }
+            
+                                    act="A = A - M";
+                                }
+            
+                                if (loop === 1) {
+                                    flag = odd(A);
+                                    Q1 = odd(Q);
+                                    Q = Math.floor(Q / 2);
+                                    A = Math.floor(A / 2);
+                                    if (flag === 1) {
+                                        Q += b;
+                                    }
+            
+                                    if (A >= e) {
+                                        A += b;
+                                    }
+            
+                                    act="Right Arithmetic Shift";
+            
+                                }
+                                loop += 1;
+            
+                                ac = binary(A, Cnt);
+                                q = binary(Q, Cnt);
+                                m = binary(M , Cnt);
+        
+                               result[deck]={"count":count, "m":m,"ac":ac,"q":q,"Q1":Q1,"act":act};
+                                deck +=1;
+                     }
+                    }
+                     else {
+                            while (loop !== 2) {
+                                if (loop === 0) {
+                                    if (negM === 1) {
+                                        A = A + nM;
+                                    } else {
+                                        A = A + M;
+                                    }
+                                    if (A > d) {
+                                        A = A % c;
+                                    }
+            
+                                    act="A = A + M";
+                                }
+            
+                                if (loop === 1) {
+                                    flag = odd(A);
+                                    Q1 = odd(Q);
+                                    Q = Math.floor(Q / 2);
+                                    A = Math.floor(A / 2);
+                                    if (flag === 1) {
+                                        Q += b;
+                                    }
+            
+                                    if (A >= e) {
+                                        A += b;
+                                    }
+            
+                                    act="Right Arithmetic Shift";
+            
+                                }
+                                loop += 1;
+            
+                                ac = binary(A, Cnt);
+                                q = binary(Q, Cnt);
+                                m = binary(M , Cnt);
+            
+                               result[deck]=result[deck]={"count":count, "m":m,"ac":ac,"q":q,"Q1":Q1,"act":act};
+                                deck += 1;
+                                
+                     }
+                        }
+                 } else {
+                    Q1 = odd(Q);
+                        flag = odd(A);
+                        Q = Math.floor(Q / 2);
+                        A = Math.floor(A / 2);
+                        if (flag === 1) {
+                            Q += b;
+                        }
+            
+                        if (A >= e) {
+                            A += b;
+                        }
+            
+                        act="Right Arithmetic Shift";
+            
+                                 ac = binary(A, Cnt);
+                                 q = binary(Q, Cnt);
+                                 m = binary(M , Cnt);
+             
+                                 result[deck]=result[deck]={"count":count, "m":m,"ac":ac,"q":q,"Q1":Q1,"act":act};
+                                 deck +=1;
+                                 
+                                
+                     }
+                    count -= 1;
+                }
+            
+                r=ac+" "+q;
+                result[deck]={"count":count,"r":r};
+        }
+        
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
         
         function random(){
-            let x = Math.floor(Math.random()*10);
-            let y = Math.floor(Math.random()*10);
+            let x = Math.floor(Math.random()*20 - 9);
+            let y = Math.floor(Math.random()*20 - 9);
             var list = [];
         
             while(x==0){
-                x = Math.floor(Math.random()*10);
+                x = Math.floor(Math.random()*20 - 9);
             }
             while(y==0){
-                y = Math.floor(Math.random()*10);
-            }
-
-            if(x==y){
-                y = Math.floor(Math.random()*10);
+                y = Math.floor(Math.random()*20 - 9);
             }
         
             if(Math.abs(x)>Math.abs(y)){
@@ -455,6 +511,36 @@ let Morg = M, Qorg = Q;
         var hint = document.getElementById('hint');
         var hin = document.querySelector('.mn');
         
+        hint.addEventListener('click', async() =>{
+            if(flag1){
+                hint.style.background = 'grey';
+                buttondis(button);
+                buttondis(check);
+                await sleep(1000);
+ 
+            document.getElementById('algoTable').style.display='none';
+            hin.style.display='block';
+            hint.style.background = '#0074d9';
+            hint.innerHTML = `Hide Flowchart`;
+            button.style.display = 'none';
+                flag1 = false;
+
+            }
+            else{
+                hint.style.background = 'grey';
+                await sleep(1000);
+            document.getElementById('algoTable').style.display='block';
+            hin.style.display='none';
+            hint.style.background = '#0074d9';
+            hint.innerHTML = `Show Flowchart`;
+            button.style.display = 'block';
+                flag1 = true;
+                buttonden1(button);
+                buttonden2(check);
+            }
+
+
+        });
         button.addEventListener('click', async () => {
                 const ques = document.getElementById('algoBody');
                 const ans = document.getElementById('confirm');
@@ -465,13 +551,14 @@ let Morg = M, Qorg = Q;
                 var count = document.getElementById('count');
                 var AC = document.getElementById('AC');
                 var Q = document.getElementById('Q');
+                var Q1 = document.getElementById('Q1');
                 var act = document.getElementById('List');
                 Cnt = 1;
                 result = [];
-
+        
                 if (flag) {
                     list = random();
-                   nonrestoring(list[0],list[1]);
+                    booth(list[0],list[1]);
                     console.log(result);
         
                     place1.innerHTML = `${list[0]}`;
@@ -484,6 +571,7 @@ let Morg = M, Qorg = Q;
                     <td>${result[0].m}</td>
                     <td>${result[0].ac}</td>
                     <td>${result[0].q}</td>
+                    <td>${result[0].Q1}</td>
                     <td>${result[0].act}</td>`;
                     ans.appendChild(giv); 
                     
@@ -529,42 +617,13 @@ let Morg = M, Qorg = Q;
         
                 }
         });
-        hint.addEventListener('click', async() =>{
-            if(flag1){
-                hint.style.background = 'grey';
-                buttondis(button);
-                buttondis(check);
-                await sleep(1000);
- 
-            document.getElementById('algoTable').style.display='none';
-            hin.style.display='block';
-            hint.style.background = '#0074d9';
-            hint.innerHTML = `Hide Flowchart`;
-            button.style.display = 'none';
-                flag1 = false;
-
-            }
-            else{
-                hint.style.background = 'grey';
-                await sleep(1000);
-            document.getElementById('algoTable').style.display='block';
-            hin.style.display='none';
-            hint.style.background = '#0074d9';
-            hint.innerHTML = `Show Flowchart`;
-            button.style.display = 'block';
-                flag1 = true;
-                buttonden1(button);
-                buttonden2(check);
-            }
-
-
-        });
         
         check.addEventListener('click', async () => {
             var count = document.getElementById('count');
             var M = document.getElementById('M');
             var AC = document.getElementById('AC');
             var Q = document.getElementById('Q');
+            var Q1 = document.getElementById('Q1');
             var act = document.getElementById('List');
             const ans = document.getElementById('confirm');
             let flag = 0;
@@ -594,7 +653,14 @@ let Morg = M, Qorg = Q;
                 Q.style.background = 'red';
             }
         
-
+            if(result[Cnt].Q1 == Q1.value && !(isNaN(parseInt(Q1.value)))){
+                Q1.style.background = 'green';
+                flag += 1;
+            }
+            else{
+                Q1.style.background = 'red';
+            }
+        
             if(result[Cnt].act == act.value){
                 act.style.background = 'green';
                 flag += 1;
@@ -605,28 +671,32 @@ let Morg = M, Qorg = Q;
 
             await sleep(1000);
 
-            act.style.background = 'white';
+            
+            act.style.background = 'white'; Q1.style.background = 'white';
                  Q.style.background = 'white'; AC.style.background = 'white'; 
                  count.style.background = 'white';
+
+
         
-            if(flag==4){
+            if(flag==5){
                 const giv = document.createElement('tr');
                 giv.innerHTML = `<td>${result[Cnt].count}</td>
                 <td>${result[Cnt].m}</td>
                 <td>${result[Cnt].ac}</td>
                 <td>${result[Cnt].q}</td>
+                <td>${result[Cnt].Q1}</td>
                 <td>${result[Cnt].act}</td>`;
                 ans.appendChild(giv); 
                 Cnt += 1;
-             
-        
+
                 await sleep(1000);
 
                 count.value ='';
                     AC.value = '';
                     Q.value = '';
+                    Q1.value ='';
         
-                act.style.background = 'white';
+                act.style.background = 'white'; Q1.style.background = 'white';
                  Q.style.background = 'white'; AC.style.background = 'white'; 
                  count.style.background = 'white';
             }
@@ -639,12 +709,11 @@ let Morg = M, Qorg = Q;
         
                 const re = document.getElementById('result');
         
-                re.innerHTML = `<p> Q = (${list[0]})<sub>10</sub> = (${result[0].q})<sub>2</sub><br>
-                M = (${list[1]})<sub>10</sub> = (${result[0].m})<sub>2</sub><br>
-                Quotient = (${Math.floor(list[0]/list[1])})<sub>10</sub> = (${result[Cnt].q})<sub>2</sub><br>
-                Remainder = (${list[0]%list[1]})<sub>10</sub> = (${result[Cnt].ac})<sub>2</sub>`;
-            
-        }});
+                re.innerHTML = `<p> M = (${list[0]})<sub>10</sub> = (${result[0].m})<sub>2</sub><br>
+                Q = (${list[1]})<sub>10</sub> = (${result[0].q})<sub>2</sub><br>
+                Result = (${list[0]*list[1]})<sub>10</sub> = (${result[Cnt].r})<sub>2</sub>`;
+            }
+        });
         </script>
     </div>
 </body>
