@@ -291,7 +291,7 @@
                     sim.innerHTML = `        <table id="tab">
             <tr>
                 <th rowspan="3"><p id="A1" style="padding-top: 0px;">${A}</p></th>
-                <th rowspan="3"><img id ="img1" src ="../images/gates/gates/${g1}/${A}${B}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
+                <th rowspan="3"><img id ="img1" src ="../images/gates/${g1}/${A}${B}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
                 <th rowspan="3"><p id="out1" style="padding-top: 0px;">${Output}</p></th>
             </tr>
         </table>`;
