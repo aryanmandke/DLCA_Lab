@@ -288,13 +288,14 @@
 
             function gatesdisplay1(A,B,Output,g1){
                 if(g1 == 'not'){
-                    sim.innerHTML = `        <table id="tab">
+                    sim.innerHTML = `<table id="tab">
             <tr>
                 <th rowspan="3"><p id="A1" style="padding-top: 0px;">${A}</p></th>
                 <th rowspan="3"><img id ="img1" src ="../images/gates/${g1}/${A}${B}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
                 <th rowspan="3"><p id="out1" style="padding-top: 0px;">${Output}</p></th>
             </tr>
-        </table>`;
+        </table>
+        <th><p id="B1" style="padding-top: 10px;display:none;user-select: none;">${B}</p></th>`;
 
                 }
                 else{
