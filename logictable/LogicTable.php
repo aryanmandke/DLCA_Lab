@@ -10,30 +10,27 @@
     <title></title>
 
     <style>
-   body {
- font-family: Arial, sans-serif;
- margin: 0px auto;
- padding: 0px;
- background: url("../images/sim.jpg") no-repeat center center fixed;
- background-size: cover;
- justify-content: center;
- align-items: center;
- }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
     
     #container {
-        width: 800px;
+        max-width: 1000px;
         margin: 10px auto;
         padding: 20px;
         background-color: #ffffff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.9);
     }
     
     h1 {
         color: #333;
     }
     
+    /* Styling for the input fields and calculate button */
     label {
         font-size: 16px;
         color: #333;
@@ -70,9 +67,8 @@
         height: 80%;
         padding-top: 10px;
         border-radius: 4px;
+        margin-top: 18px;
         cursor: pointer;
-        margin-top: 24px;
-        margin-bottom: 16px;
     }
     
     #check{
@@ -84,160 +80,75 @@
         height: 80%;
         width:fit-content;
         cursor: pointer;
-        padding-top: 10px;
-        margin-right: 10px;
-        border-radius: 4px;
-        margin-top: 18px;
     }
     
-    #algoTable{
+    table{
         width: 100%;
         border-collapse: collapse;
         display: flex-start;
         margin-top: 10px;
-        margin-bottom: 10px;
+    
     }
     
-    #algoTable th, td{
+    th, td{
         border: 1px solid #ccc;
         padding: 8px;
         text-align: center;
     }
     
-    #algoTable th {
+    #con{
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ffffff;
+        width: 100px;
+    }
+    
+    th {
         background-color: #333;
         color: #fff;
         align-items: center;
-        border: 1px solid;
         align-self: center;
     }
     
-    #algoTable input[type = 'number'],input[type = 'number'],input[type = 'number']{
+    input[type = 'number'],input[type = 'number'],input[type = 'number']{
         width:80%;
         margin: auto;
         font-size: 16px;
         text-align: center;
         border: 1px solid #ccc;
     }
-
-    #M{
+    
+    #List{
+        width: fit-content;
         font-size: 16px;
     }
-
-    #confirm th,td{
-        border: 1px solid #ccc;
-    }
-
-    #con{
-        padding: 8px;
-        text-align: center;
-        border: 1px solid #ffffff;
-        width: 50px;
-    }
-
-    .T{
-        display: flex;
-        margin: 20px auto;
-        margin-left: 0px;
-        user-select: none;
-    }
-
-    #sim{
-        width: max-content;
-        height: min-content;
-        display: none;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin: 0px auto;
-        align-items: center;
-        margin-left: 20%;
-        margin-right: 10px;
-    }
-
-    #algoBody td,th{
-        border: 1px solid #ccc;
-        width: 10px;
-    }
-
-    header {
-            display: flex;
-            background-color: #971426;
-            padding: 20px;
-            color: #ffffff;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        header h4 {
-            margin: auto;
-            text-align: center;
-        }
-
-        header a{
-            text-decoration: none;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-    #sim table{
-        height: 100px;
-    }
-
-    #tab th,td {
-        border: 0px solid #ccc;
-        width: 10px;
+    
+    #M{
+        font-size: 16px;
     }
     
     #result p{
         font-size: 16px;
     }
     
-    #algoTable tr:nth-child(even){
+    tr:nth-child(even){
         background-color: #f2f2f2;
     }
-
-    #gateSelector1, #gateSelector2 {
-        width: fit-content;
-        font-size: 16px;
-        padding: 5px;
-        border-radius: 16px;
-    }
-
-    #ta{
-        align-items: center;
-        display: none;
-        padding-left: -10px;
-        width: min-content;
-        
-    }
-
-    #ta table{
-        border: 1px solid #CCC;
-    }
-
 
     </style>
 </head>
 <body>
-<header>
-        <a href="../logictable/LogicTheo.php" class="back-button">Back</a>
-        <h4>Logic Gates Simulation</h4>
-        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
-    </header>
-    <main>
     <div id="container">
-        <h1>Logic Gates Simulation</h1>
+        <h1>Booth's Algorithm Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
     <div class="Q">
         <p>First Gate:
             <select id="gateSelector1">
-                <option value="AND Gate">AND Gate</option>
-                <option value="OR Gate">OR Gate</option>
-                <option value="NOT Gate">NOT Gate</option>
-                <option value="NOR Gate">NOR Gate</option>
-                <option value="XOR Gate">XOR Gate</option>
-                <option value="XNOR Gate">XNOR Gate</option>
-                <option value="NAND Gate">NAND Gate</option>
+            <option value="AND Gate">AND Gate</option>
+            <option value="OR Gate">OR Gate</option>
+            <option value="NOT Gate">NOT Gate</option>
+            <option value="NOR Gate">NOR Gate</option>
+            <option value="XOR Gate">XOR Gate</option>
         </select></p>
         <p>Second Gate:
             <select id="gateSelector2">
@@ -247,8 +158,6 @@
                 <option value="NOT Gate">NOT Gate</option>
                 <option value="NOR Gate">NOR Gate</option>
                 <option value="XOR Gate">XOR Gate</option>
-                <option value="XNOR Gate">XNOR Gate</option>
-                <option value="NAND Gate">NAND Gate</option>
         </select></p>
         <button id="reset">Finalize</button>
     </div>
@@ -265,33 +174,18 @@
             </thead>
             <tbody id="confirm"></tbody>
             <tbody id="algoBody">
-                <td><input type="number" id="A" min="0" max="1" required disabled="true" value="0"></td>
-                <td><input type="number" id="B" min="0" max="1" required disabled="true" value="0"></td>
-                <td><input type="number" id="C" min="0" max="1" required disabled="true" value="0"></td>
+                <td><input type="number" id="A" min="0" max="1" required disabled="true"></td>
+                <td><input type="number" id="B" min="0" max="1" required disabled="true"></td>
+                <td><input type="number" id="C" min="0" max="1" required disabled="true"></td>
                 <td id="g1">-</td>
                 <td id="g2">-</td>
                 <td id="out">-</td>
-            <td id="con" style="border: 0px solid white"><button id="check" disabled="true" style="background: grey;">Begin Simulation</button></td>
+            <td id="con"><button id="check" disabled="true" style="background: grey;">Check Answer</button></td>
             </tbody>
         </table>
  
         <div id = "result"></div>
-    <div class = "T">
-    <div id ="sim"></div>
-    <div id ="ta">
-        <table style="border: 1px solid #ccc;border-collapse: collapse;;padding:1px;margin:0px">
-            <tr>
-                <th style="color:#00904a;padding: 5px;">Green</th>
-                <th style="color:#00904a;padding: 5px;">1</th>
-            </tr>
-            <tr>
-                <th style="color:red;padding: 5px;">Red</th>
-                <th style="color:red;padding: 5px;">0</th>
-            </tr>
-        </table>
     </div>
-    </div>
-
     
     <div>
         <script>
@@ -312,12 +206,6 @@
                         break;
                     case "XOR Gate":
                         output = ((inputValA || inputValB) && !(inputValA && inputValB));
-                        break;
-                    case "NAND Gate":
-                        output = (!(inputValA && inputValB));
-                        break;
-                    case "XNOR Gate":
-                        output =(!((inputValA || inputValB) && !(inputValA && inputValB)));
                         break;
                     default:
                         break;
@@ -341,143 +229,8 @@
                 console.log(output);
 
                 let out = gate2(b,output,inputValC);
-                console.log(out);
+console.log(out);
                 return out;
-            }
-
-            function gatesdisplay1(A,B,Output,g1){
-                if(g1 == 'not'){
-                    sim.innerHTML = `<table id="tab">
-            <tr>
-                <th rowspan="3"><p id="A1" style="padding-top: 0px;">${A}</p></th>
-                <th rowspan="3"><img id ="img1" src ="../images/gates/${g1}/${A}${B}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
-                <th rowspan="3"><p id="out1" style="padding-top: 0px;">${Output}</p></th>
-            </tr>
-        </table>
-        <th><p id="B1" style="padding-top: 10px;display:none;user-select: none;">${B}</p></th>`;
-
-                }
-                else{
-                sim.innerHTML = `<table id="tab">
-            <tr>
-                <th rowspan="1"><p id="A1" style="padding-top: 20px;">${A}</p></th>
-                <th rowspan="3"><img id ="img1" src ="../images/gates/${g1}/${A}${B}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
-                <th rowspan="3"><p id="out1" style="padding-top: 0px;">${Output}</p></th>
-            </tr>
-            <tr>
-                <th><p id="B1" style="padding-top: 10px;">${B}</p></th>
-            </tr>
-            <tr>
-                <th style="-ms-user-select: none;user-select: none;color: white;">1</th>
-            </tr>
-
-        </table>`;
-        }
-
-        sim.style.marginLeft="20%";
-
-                var A1 = document.getElementById('A1');
-                var B1 = document.getElementById('B1');
-                var out1 = document.getElementById('out1');
-
-                colorchange(A,A1);
-                colorchange(B,B1);
-                colorchange(Output,out1);
-
-            }
-
-            function gatesdisplay2(A,B,ab,C,Output,g1,g2){
-
-                sim.innerHTML = `<table id="tab">
-                <tr>
-                    <th><p id="A1" style="margin-top: 65px;">${A}</p></th>
-                    <th rowspan="3"><img id ="img1" src ="../images/gates/${g1}/${A}${B}.png" height="150px" width="250px" style="margin-right: -20px;"></th>
-                    <th style="-ms-user-select: none;user-select: none;color: white;">1</th>
-                    <th rowspan="3"><img id="img2" src ="../images/gates/${g2}/${ab}${C}.png" height="150px" width="250px" style="padding-top: 65px"  ></th>
-                    <th rowspan="3"><p id="out1" style="padding-top: 60px;">${Output}</p></th>
-                </tr>
-                <tr>
-                    <th><p id="B1" style="margin-top: 3px;">${B}</p></th>
-                    <th rowspan="2"><p id="C1" style="padding-top: 24px;">${C}</p></th>
-                </tr>
-                <tr>
-                    <th style="-ms-user-select: none;user-select: none;color: white;">1</th>
-                </tr>
-    
-            </table>`;
-
-
-
-            var A1 = document.getElementById('A1');
-                var B1 = document.getElementById('B1');
-                var C1 = document.getElementById('C1');
-
-                var img1 = document.getElementById('img1');
-                var img2 = document.getElementById('img2');
-
-                var out1 = document.getElementById('out1');
-
-            if(g2 == 'nor'){
-                        img2.style.paddingTop = "60px";
-                        C1.style.paddingTop = "15px";
-                        console.log("change");
-                }
-
-                if(g1 == 'not'){
-                        A1.style.marginTop = "100px";
-                        B1.style.userSelect = "none";
-                        B1.style.color = "white";
-                        C1.style.paddingTop = "0px";
-                        C1.style.marginTop = "6px";
-                        console.log("change");
-
-                        if(g2 == 'nor'){
-                            A1.style.marginTop = "96px";
-                        C1.style.paddingTop = "5px";
-                        C1.style.marginTop = "-5px";
-                        console.log("change");
-                }
-                }
-
-                if (g2 == 'not'){
-                    A1.style.marginTop = "16px";
-                    A1.style.paddingTop = "20px";
-                    B1.style.marginTop = "25px";
-                    img2.style.paddingTop = "0px";
-                    out1.style.paddingTop = "0px";
-                    out1.style.marginTop = "13px";
-                    out1.style.marginBottom = "16px";
-
-                    C1.style.display = 'none';
-                    console.log("change");
-
-                    if(g1 == 'not'){
-                        A1.style.marginTop = "80px";
-                        B1.style.userSelect = "none";
-                        B1.style.color = "white";
-                        console.log("change");
-                    }
-                }
-                
-                colorchange(A,A1);
-                colorchange(B,B1);
-                colorchange(C,C1);
-                colorchange(Output,out1);
-                
-        sim.style.marginLeft="15%";
-            }
-
-            function colorchange(Aval,A){
-
-                if(A.style.color != "white"){
-
-                if(Aval == 1){
-                    A.style.color = "green";
-                }
-                else{
-                    A.style.color = "red";
-                }
-            }
             }
 
             function gatecheck(a,b,inputA,inputB,inputC){
@@ -509,33 +262,15 @@
                 }
             }
 
-            function confirminsert(inputA,inputB,inputC,gate_1,gate_2,output){
-                    row = document.createElement('tr');
-                    row.innerHTML = `
-                                    <td style="border: 1px solid #ccc">${dash(inputA)}</td>
-                                    <td style="border: 1px solid #ccc">${dash(inputB)}</td>
-                                    <td style="border: 1px solid #ccc">${dash(inputC)}</td>
-                                    <td style="border: 1px solid #ccc">${gate_1}</td>
-                                    <td style="border: 1px solid #ccc">${gate_2}</td>
-                                    <td style="border: 1px solid #ccc">${output}</td>`;
-                Confirm.appendChild(row);
-                out.innerHTML = `${output}`;
-                cnt += 1;
-
-                if(cnt>7){
-                    Confirm.removeChild(Confirm.firstChild);
-                }
-            }
-
             const gateSelector1 = document.getElementById('gateSelector1');
             const gateSelector2 = document.getElementById('gateSelector2');
             const button = document.getElementById('reset');
             const check = document.getElementById("check");
-            const sim = document.getElementById('sim');
-            const ta = document.getElementById('ta');
 
             const Confirm = document.getElementById('confirm');
-            var cnt = 0;
+            var inputA = document.getElementById('A');
+            var inputB = document.getElementById('B');
+            var inputC = document.getElementById('C');
 
             const truthTableBody = document.querySelector('#truthTable tbody');
             const gateContainer = document.getElementById('gateContainer');
@@ -544,15 +279,10 @@
             const g2 = document.getElementById('g2');
             const out = document.getElementById('out');
 
-            var inputA = document.getElementById('A');
-                var inputB = document.getElementById('B');
-                var inputC = document.getElementById('C');
-
             var A_flag,B_flag,C_flag,gate2_flag;
             var flag = true;
 
             var gate_1,gate_2;
-            var fgate,sgate;
 
 
             
@@ -571,20 +301,8 @@
                     g1.innerHTML=`${gate_1}`;
                     g2.innerHTML=`${gate_2}`;
                     flag = false;
-                    cnt = 0;
-                    fgate = gate_1.split(" ");
-                    fgate = fgate[0];
-                    fgate = fgate.toLowerCase();
-                    sgate = gate_2.split(" ");
-                    sgate = sgate[0];
-                    sgate = sgate.toLowerCase();
                 }
                 else{
-
-                inputA = document.getElementById('A');
-                inputB = document.getElementById('B');
-                inputC = document.getElementById('C');
-
                     Confirm.innerHTML = ``;
                     check.disabled = true;
                     Confirm.innerHTML = ``;
@@ -597,120 +315,46 @@
                     inputC.disabled = "true";
                     button.innerHTML = "Finalize";
                     flag = true;
-                    cnt = 0;
-                    sim.style.display = 'none';
-                    ta.style.display = 'none';
-                    inputA.value = 0;
-                    inputB.value = 0;
-                    inputC.value = 0;
                 }
             });
 
-            function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-            check.addEventListener('click', async () => {
-                inputA = document.getElementById('A');
-                inputB = document.getElementById('B');
-                inputC = document.getElementById('C');
-
-                var row = document.createElement('tr');
+            check.addEventListener('click', () => {
 
                 var inputValA = parseInt(inputA.value);
                 var inputValB = parseInt(inputB.value);
                 var inputValC = parseInt(inputC.value);
                 var output = true;
-                var out = true;
-                const gate = [];
-                sim.style.display = 'none';
-                ta.style.display = 'none';
 
                 if(gate_2 == '-'){
-                    if((inputValA>=0 && inputValA<=1) && (inputValB>=0 && inputValB<=1)){
                     output = gate2(gate_1,inputValA,inputValB);
-                    confirminsert(inputA,inputB,inputC,gate_1,gate_2,output);
-                    gatesdisplay1(inputValA,inputValB,output,fgate);
-                    sim.style.display = 'block';
-                    ta.style.display = 'block';
-                    }
-                    else{
-                        if(!(inputValA>=0 && inputValA<=1)){
-                            inputA.style.backgroundColor="red";
-                            
-                        }
-
-                        if(!(inputValB>=0 && inputValB<=1)){
-                            inputB.style.backgroundColor="red";
-                        }
-
-                        await sleep(1000);
-                        inputB.style.backgroundColor="white"; inputA.style.backgroundColor="white";
-                    }
-
                 }
                 else{
-                    if(gate_2 == 'NOT Gate'){
-                        if((inputValA>=0 && inputValA<=1) && (inputValB>=0 && inputValB<=1)){
-                            out = gate2(gate_1,inputValA,inputValB);
-                            output = gate3(gate_1,gate_2,inputValA,inputValB,inputValC);
-                            gatesdisplay2(inputValA,inputValB,out,inputValC,output,fgate,sgate);
-                            confirminsert(inputA,inputB,inputC,gate_1,gate_2,output);
-                            sim.style.display = 'block';
-                            ta.style.display = 'block';
-                        }
-                        else{
-                        if(!(inputValA>=0 && inputValA<=1)){
-                            inputA.style.backgroundColor="red";
-                            
-                        }
-
-                        if(!(inputValB>=0 && inputValB<=1)){
-                            inputB.style.backgroundColor="red";
-                        }
-
-                        await sleep(1000);
-                        inputB.style.backgroundColor="white"; inputA.style.backgroundColor="white";
-                    }
-                    }
-                    else{
-                        if((inputValA>=0 && inputValA<=1) && (inputValB>=0 && inputValB<=1) && (inputValC<=1 && inputValC>=0)){
-                            out = gate2(gate_1,inputValA,inputValB);
-                            output = gate3(gate_1,gate_2,inputValA,inputValB,inputValC);
-                            gatesdisplay2(inputValA,inputValB,out,inputValC,output,fgate,sgate);
-                            confirminsert(inputA,inputB,inputC,gate_1,gate_2,output);
-                            sim.style.display = 'block';
-                            ta.style.display = 'block';
-                        }
-                        else{
-                            if(!(inputValA>=0 && inputValA<=1)){
-                            inputA.style.backgroundColor="red";
-                            
-                        }
-
-                        if(!(inputValB>=0 && inputValB<=1)){
-                            inputB.style.backgroundColor="red";
-                        }
-
-                        if(!(inputValC>=0 && inputValC<=1)){
-                            inputC.style.backgroundColor="red";
-                        }
-
-                        await sleep(1000);
-                        inputB.style.backgroundColor="white"; inputA.style.backgroundColor="white"; inputC.style.backgroundColor="white";
-                        }
-                    }
+                    output = gate3(gate_1,gate_2,inputValA,inputValB,inputValC);
                 }
 
-               
-                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${dash(inputA)}</td>
+                    <td>${dash(inputB)}</td>
+                    <td>${dash(inputC)}</td>
+                    <td>${gate_1}</td>
+                    <td>${gate_2}</td>
+                    <td>${output}</td>`;
+                Confirm.appendChild(row);
+
+
+                out.innerHTML = `${output}`;
 
                 console.log(output);
+
+
+
+
             });
 
 
         </script>
     </div>
-        </main></body>
+</body>
 
 </html>

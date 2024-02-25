@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
     <style>
- body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0px;
@@ -19,10 +19,9 @@ session_start();
             margin: 0 auto;
             background: #fff;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: 0.6s ease-out;
-            
         }
 
         label {
@@ -30,25 +29,13 @@ session_start();
             margin-bottom: 8px;
         }
 
-        #username, #email {
-            width: 50%;
+        #username, #email, textarea {
+            width: 100%;
             padding: 8px;
             margin-bottom: 15px;
-            height: 10px;
-            text-align:left;
-            display: inline-block;
-            margin-top: 15px;
-        }
-        
-        textarea{
-            width: 97%;
-            padding: 8px;
-            font-family: Arial, sans-serif;
-            margin: 8px 0px 15px;
-            border: 3px solid #ccc;
-            border-radius: 5px;
-            height: 20px;
-            text-align:left;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         header a{
@@ -103,18 +90,20 @@ session_start();
 
         .rating {
             margin: 5px;
-            text-align:justify;
+            text-align: justify;
             display: flex;
-            border: 3px solid #ccc;
-            border-radius: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             padding: 10px;
             margin: 0;
-            margin-bottom: 15px;
         }
 
         .star{
             margin: 5px;
-            text-align: center;
+            text-align: justify;
+            display: flex;
+            padding: 10px;
+            margin: 0;
         }
 
         .rating {
@@ -130,14 +119,13 @@ session_start();
         }
 
         .star label {
-            font-size: 35px;
+            font-size: 20px;
             color: #ccc;
             cursor: pointer;
             display: inline-block; 
             text-align: center;
             margin: 5px;
-            -ms-user-select: none;
-            user-select: none;
+            -ms-user-select: none;user-select: none;
         }
 
         .star label:before {
@@ -158,22 +146,23 @@ session_start();
     </header><main><br><br><br>
 
     <form action="feed-l.php" method="post" id="feedbackForm" onsubmit="return validate();">
-        <label for="name">Username:<p id= "username"> <?php echo $_SESSION['user']?></p></label>
-        
+        <label for="name">Username:</label>
+        <p id= "username"> <?php echo $_SESSION['user']?></p>
 
-        <label for="name">Email:<p id = "email"><?php echo $_SESSION['email'] ?></p></label>
-        
+        <label for="name">Email:</label>
+        <p id = "email"><?php echo $_SESSION['email'] ?></p>
+
         <label for="feed">Feedback</label>
         <div class="rating">
             <ol>
                 <li>
                     <p>How would you rate your overall experience with this virtual lab experiment?</p>
                     <div class="star">
-                        <input type="radio" name="q1" value="5" id="s1"> <label for="s1"></label>
-                        <input type="radio" name="q1" value="4" id="s2"> <label for="s2"></label>
-                        <input type="radio" name="q1" value="3" id="s3"> <label for="s3"></label>
-                        <input type="radio" name="q1" value="2" id="s4"> <label for="s4"></label>
-                        <input type="radio" name="q1" value="1" id="s5"> <label for="s5"> </label>
+                        <input type="radio" name="q1" value="5" id="s1"> <label for="s1"> Excellent</label>
+                        <input type="radio" name="q1" value="4" id="s2"> <label for="s2"> Good</label>
+                        <input type="radio" name="q1" value="3" id="s3"> <label for="s3"> Average </label>
+                        <input type="radio" name="q1" value="2" id="s4"> <label for="s4"> Below Average</label>
+                        <input type="radio" name="q1" value="1" id="s5"> <label for="s5"> Poor </label>
                     </div>
                 </li><br>
                 <li>
@@ -207,53 +196,39 @@ session_start();
 </main>
 
 <script>
-
-        var radios1 = document.getElementsByName("q1");
-        var radios2 = document.getElementsByName("q2");
-        var radios3 = document.getElementsByName("q3");
-
         function validate() {
-            
-            var formValid1 = false;
-            var formValid2 = false;
-            var formValid3 = false;
+            var radios1 = document.getElementsByName("q1");
+            var radios2 = document.getElementsByName("q2");
+            var radios3 = document.getElementsByName("q3");
+            var formValid = false;
 
             for (var i = 0; i < radios1.length; i++) {
                 if (radios1[i].checked) {
-                    formValid1 = true;
+                    formValid = true;
                     break;
                 }
             }
 
             for (var i = 0; i < radios2.length; i++) {
                 if (radios2[i].checked) {
-                    formValid2 = true;
+                    formValid = true;
                     break;
                 }
             }
 
             for (var i = 0; i < radios3.length; i++) {
                 if (radios3[i].checked) {
-                    formValid3 = true;
+                    formValid = true;
                     break;
                 }
             }
 
-            if (!(formValid1)) {
-                alert("Please select a option in 1st question!");
+            if (!(formValid)) {
+                alert("Please select a option!.");
             }
 
-            if (!(formValid2)) {
-                alert("Please select a option in 2nd question!");
-            }
-
-            if (!(formValid3)) {
-                alert("Please select a option in 3rd question!");
-            }
-
-            return formValid1 && formValid2 && formValid3;
+            return formValid;
         }
-
     </script>
 </body>
 </html>

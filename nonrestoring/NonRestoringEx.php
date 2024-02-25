@@ -11,12 +11,11 @@
 
     <style>
     body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url("../images/9504928_26768.jpg") no-repeat center center fixed;
-            background-size: 100% 100%;
-        }
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
     
     #container {
         max-width: 1000px;
@@ -25,14 +24,12 @@
         background-color: #ffffff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.95);
     }
     
     h1 {
         color: #333;
     }
     
-    /* Styling for the input fields and calculate button */
     label {
         font-size: 16px;
         color: #333;
@@ -60,7 +57,7 @@
         padding-top: 10px;
     }
     
-    #reset,#hint {
+    #reset {
         font-size: 16px;
         padding: 8px 16px;
         background-color: #0074d9;
@@ -68,7 +65,6 @@
         border: none;
         height: 80%;
         padding-top: 10px;
-        margin-right: 10px;
         border-radius: 4px;
         margin-top: 18px;
         cursor: pointer;
@@ -83,10 +79,6 @@
         height: 80%;
         width:fit-content;
         cursor: pointer;
-        padding-top: 10px;
-        margin-right: 10px;
-        border-radius: 4px;
-        margin-top: 18px;
     }
     
     table{
@@ -115,36 +107,17 @@
         align-self: center;
     }
     
-    input[type = 'text'],input[type = 'number'],input[type = 'number']{
+    input[type = 'text'],input[type = 'number']{
         width:80%;
         margin: auto;
         font-size: 16px;
-        padding: 5px;
         text-align: center;
         border: 1px solid #ccc;
-    }
-
-    .mn{
-        display: none;
-        border: 2px solid #ccc;
-        padding: 20px;
-    }
-
-    .hin{
-        width: fit-content;
-        display: flex;
-        margin: auto;
-    }
-
-    .hin img{
-        height: 75%;
     }
     
     #List{
         width: fit-content;
         font-size: 16px;
-        padding: 5px;
-        border-radius: 16px;
     }
     
     #M{
@@ -158,36 +131,9 @@
     tr:nth-child(even){
         background-color: #f2f2f2;
     }
-
-    header {
-            display: flex;
-            background-color: #971426;
-            padding: 20px;
-            color: #ffffff;
-            width: 100%;
-            box-sizing: border-box;
-            border-bottom: 1px solid white;
-        }
-
-        header h4 {
-            margin: auto;
-            text-align: center;
-        }
-
-        header a{
-            text-decoration: none;
-            font-weight: bold;
-            color: #ffffff;
-        }
     </style>
 </head>
 <body>
-<header>
-        <a href="../nonrestoring/NonRestoTheo.php" class="back-button">Back</a>
-        <h4>Non-Restoring Division Algorithm Quiz</h4>
-        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
-    </header>
-<main>
     <div id="container">
         <h1>Non-Restoring Division Algorithm Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
@@ -195,16 +141,15 @@
         <p>Dividend: <p id = "first"></p></p>
         <p>Divisor: <p id = "second"></p></p>
         <button id="reset">Get a Question!</button>
-        <button id="hint" style="display: none;">Show Flowchart</button>
     </div>
         <table id="algoTable">
             <thead>
                 <tr>
-                <th style="border-left: 1px solid black">Count</th>
+                    <th>Count</th>
                     <th>M</th>
                     <th>AC</th>
                     <th>Q</th>
-                    <th style="border-right: 1px solid black">Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="confirm"></tbody>
@@ -225,7 +170,6 @@
         </table>
  
         <div id = "result"></div>
-        <div class="mn"style="margin:auto"><div class = "hin"><img src="../images/Flow-Chart-for-Non-Restoring-division.png" height="50%"></div>
     </div>
     
     <div>
@@ -262,7 +206,7 @@
             }
         }
         
-          function binary(N, Cnt) {
+        function binary(N, Cnt) {
             let i, j = 1;
             let ans="";
             while(N!=0){
@@ -291,7 +235,7 @@
                 ans=String(i)+ans;
                 j+=1;
             }
-            while(j<Cnt){
+            while(j<=Cnt){
             ans="0"+ans;
             j+=1;
             }
@@ -412,9 +356,8 @@ let Morg = M, Qorg = Q;
         }
             }
             ac = binary(A, Cnt);
-            act="A = A + M"
    
-            result[deck]={count,m,ac,q,act};
+            result[deck]={count,m,ac,q};
             
 }
 
@@ -433,10 +376,6 @@ let Morg = M, Qorg = Q;
             while(y==0){
                 y = Math.floor(Math.random()*10);
             }
-
-            if(x==y){
-                y = Math.floor(Math.random()*10);
-            }
         
             if(Math.abs(x)>Math.abs(y)){
                 list[1] = y;
@@ -449,24 +388,6 @@ let Morg = M, Qorg = Q;
         
             return list;
         }
-
-        function buttondis(a){
-            a.style.background = 'grey';
-            a.disabled = true;
-            a.style.cursor = 'default';
-        }
-
-        function buttonden1(a){
-            a.style.background = '#0074d9';
-            a.disabled = false;
-            a.style.cursor = 'pointer';
-        }
-
-        function buttonden2(a){
-            a.style.background = '#00904a';
-            a.disabled = false;
-            a.style.cursor = 'pointer';
-        }
         
         var click = 0;
         var button = document.getElementById('reset');
@@ -475,12 +396,9 @@ let Morg = M, Qorg = Q;
         const re = document.getElementById('result');
         var final_result;
         var flag = true;
-        var flag1 = true;
         var result = [];
         var Cnt = 1;
         var list;
-        var hint = document.getElementById('hint');
-        var hin = document.querySelector('.mn');
         
         button.addEventListener('click', async () => {
                 const ques = document.getElementById('algoBody');
@@ -495,10 +413,10 @@ let Morg = M, Qorg = Q;
                 var act = document.getElementById('List');
                 Cnt = 1;
                 result = [];
-
+        
                 if (flag) {
                     list = random();
-                   nonrestoring(list[0],list[1]);
+                    nonrestoring(list[0],list[1]);
                     console.log(result);
         
                     place1.innerHTML = `${list[0]}`;
@@ -514,22 +432,26 @@ let Morg = M, Qorg = Q;
                     <td>${result[0].act}</td>`;
                     ans.appendChild(giv); 
                     
-                    buttondis(button);
+                    button.disabled = true;
+                    button.style.background = 'grey';
                     await sleep(1000);
                    
                     button.innerHTML = `Another Question?`;
-                    hint.style.display = 'block';
                     check.style.display = 'block';
-                    buttonden2(check);
-                    buttonden1(hint);
+                    check.disabled = false;
+                    check.style.background = '#00904a';
         
                     flag = false;
-                    buttonden1(button);
             
-
+                    button.disabled = true;
+                    button.style.background = 'grey';
+            
+                    button.disabled = false;
+                    button.style.background = '#0074d9';
                 } 
                 else {
-                    buttondis(button);
+                    button.disabled = true;
+                    button.style.background = 'grey';
         
                     ans.innerHTML = '';
                     place1.innerHTML = ``;
@@ -539,52 +461,21 @@ let Morg = M, Qorg = Q;
                     count.value ='';
                     AC.value = '';
                     Q.value = '';
-                    Q1.value ='';
-                    buttondis(check);
-                    buttondis(hint);
+                    check.disabled = true;
+                    check.style.background = 'grey';
         
-                    act.style.background = 'white'; Q1.style.background = 'white';
+                    act.style.background = 'white';
                     Q.style.background = 'white'; AC.style.background = 'white'; 
                     max.style.background = 'white';
         
                     await sleep(1000);
         
-                    buttonden1(button);
+                    button.disabled = false;
+                    button.style.background = '#0074d9';
                     button.innerHTML = `Get Question!`;
                     flag = true;
-                    hint.style.display = 'none';
         
                 }
-        });
-        hint.addEventListener('click', async() =>{
-            if(flag1){
-                hint.style.background = 'grey';
-                buttondis(button);
-                buttondis(check);
-                await sleep(1000);
- 
-            document.getElementById('algoTable').style.display='none';
-            hin.style.display='block';
-            hint.style.background = '#0074d9';
-            hint.innerHTML = `Hide Flowchart`;
-            button.style.display = 'none';
-                flag1 = false;
-
-            }
-            else{
-                hint.style.background = 'grey';
-                await sleep(1000);
-            document.getElementById('algoTable').style.display='block';
-            hin.style.display='none';
-            hint.style.background = '#0074d9';
-            hint.innerHTML = `Show Flowchart`;
-            button.style.display = 'block';
-                flag1 = true;
-                buttonden1(button);
-                buttonden2(check);
-            }
-
-
         });
         
         check.addEventListener('click', async () => {
@@ -660,7 +551,7 @@ let Morg = M, Qorg = Q;
         
             console.log(dum.length);
         
-            if(Cnt>=result.length-1){
+            Cnt=result.length-1;
                 ques = document.getElementById('algoBody');
                 ques.style.display = 'none';
         
@@ -671,9 +562,9 @@ let Morg = M, Qorg = Q;
                 Quotient = (${Math.floor(list[0]/list[1])})<sub>10</sub> = (${result[Cnt].q})<sub>2</sub><br>
                 Remainder = (${list[0]%list[1]})<sub>10</sub> = (${result[Cnt].ac})<sub>2</sub>`;
             
-        }});
+        });
         </script>
-    </div></main>
+    </div>
 </body>
 
 </html>

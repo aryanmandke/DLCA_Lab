@@ -19,7 +19,7 @@
             align-items: center;
             margin: auto;
             max-width: 800px;
-  
+            /* Adjusted width for the main container */
         }
 
         header {
@@ -44,18 +44,18 @@
 
         .quiz-container {
             width: 100%;
-   
+            /* Adjusted width to 100% for better responsiveness */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 5px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             text-align: left;
-
+            /* Adjusted text alignment to left */
             margin: auto;
             height: fit-content;
             margin-bottom: 30px;
             max-width: 600px;
-
+            /* Adjusted max-width for the main container */
         }
 
         .quiz-container h2 {
@@ -63,8 +63,9 @@
         }
 
         .quiz-container p {
-            font-size: 16px; 
+            font-size: 16px; /* Adjusted font size to make it consistent */
             margin-bottom: 10px;
+            /* Added margin for better spacing */
         }
 
         .logo {
@@ -93,10 +94,12 @@
             margin-left: 10px;
             text-align: left;
             margin-top: 0;
+            /* Removed margin-top for better alignment */
         }
 
         .quiz-container ol li {
             margin-bottom: 10px;
+            /* Added margin for better spacing between options */
         }
 
         .submit-button {
@@ -188,14 +191,6 @@
                     <input type="radio" name="q5" value="d"> Equivalent of subtraction <br>
                     <p class="feedback"></p>
                 </li><br>
-                <li>
-                    <p>What is the boolean operation performed by an OR gate?</p>
-                    <input type="radio" name="q6" value="a"> Equivalent of addition <br>
-                    <input type="radio" name="q6" value="b"> Equivalent of multiplication <br>
-                    <input type="radio" name="q6" value="c"> Equivalent of division <br>
-                    <input type="radio" name="q6" value="d"> Equivalent of subtraction <br>
-                    <p class="feedback"></p>
-                </li><br>
 
             </ol>
             <button class="submit-button" onclick="submitQuiz()">Submit</button>
@@ -212,17 +207,15 @@
                 q3: 'c',
                 q4: 'a',
                 q5: 'a',
-                q6: 'b',
             };
 
             let score = 0;
             Object.keys(answers).forEach(question => {
                 const selectedOption = document.querySelector(`input[name=${question}]:checked`);
-                const selectedOption1 = document.querySelector(`input[name=${question}]`);
-                const feedback = selectedOption1.parentElement.querySelector('.feedback');
                 if (selectedOption) {
                     const userAnswer = selectedOption.value;
                     const correctAnswer = answers[question];
+                    const feedback = selectedOption.parentElement.querySelector('.feedback');
                     if (userAnswer === correctAnswer) {
                         score++;
                         feedback.textContent = 'Correct Answer';
@@ -232,18 +225,12 @@
                         feedback.style.color = 'red';
                     }
                 }
-                else{
-                        feedback.textContent = 'No Answer Selected';
-                        feedback.style.color = 'red';
-                    }
             });
 
             const scoreDisplay = document.querySelector('.score');
             scoreDisplay.textContent = `You scored ${score} out of ${Object.keys(answers).length}`;
             scoreDisplay.style.color = 'green';
-            if(score>4){
             document.querySelector('.feed-button').style.display = 'block';
-            }
         }
     </script>
 

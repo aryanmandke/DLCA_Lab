@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
     <title>Experiment: Aim, Theory, and Procedure</title>
-   
     <style>
         /* CSS Styles */
         body, h1, h2, p {
@@ -18,36 +17,20 @@
 
         header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
             background-color: #971426; 
             width: 100%;
             padding: 20px;
             color: #ffffff;
-            position: fixed;
-            top: 0;
-            height: 30px;
-        } 
-        .back-button{
-            text-align: left;
-            font-size: medium;
-            margin-right: 50px;
-
-
         }
+
+
         header a{
-            margin: 15px;
-            color: #ffffff;
             text-decoration: none;
-            
-            padding: 5px;
-            transition: all 0.4s;
+            font-weight: bold;
+            color: #ffffff;
         }
-        a:hover{
-           
-            border-radius: 5px;
-            font-size: 120%;
-        } 
-
 
 
         main {
@@ -72,7 +55,6 @@
             text-align: left;
             flex-direction: column;
             align-items: flex-start;
-            margin-bottom: 20px;
         }
 
         #flowchart h2 {
@@ -86,31 +68,30 @@
             margin-left: 13%;
         }
 
+        #Simulation button {
+            background-color: #971426;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            width: 75%;
+            max-width: 100%;
+            cursor: pointer;
+            margin-left: 13%;
+            margin-top: 2%;
+        }
 
-        .Dhruv{
-            margin-top: 100px;
-        }
-        .Aryan{
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <header>
-    <header class="Nav">
-        <a href="../interface/List.php" class="back-button">Back</a>
-        <a href="Booth.php" >Simulation</a>
-        <a href="BoothEx.php" >Exercise</a>
-        <a href="BoothQuiz.php" >Quiz</a>
+        <a href="../interface/List.php" class="back-button">Back</a><h1>Experiment 2: Booth's Algorithm</h1> 
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white" >Back</a>
     </header>
     </header>
-
 
     <main>
-    <div class="Dhruv">
-            <div class="Aryan">
-                <h1>Experiment 2: Booth's Algorithm</h1> 
-            </div> 
         <section id="aim">
             <h2>Aim</h2>
             <p>The aim of Booth's algorithm is to efficiently multiply two signed binary numbers using a technique that reduces the number of additions and/or subtractions needed, thus optimizing the multiplication process.</p>
@@ -166,6 +147,18 @@
            <img src="https://miro.medium.com/v2/resize:fit:1366/1*eZmx_ZWi6VzDVr2ixsPdlQ.png" width = "75%" alt = "Flowchart">
            </section>
 
+           <section id="Simulation">
+            <h2>Simulation</h2>
+            <a href = "Booth.php"><button class="start-button" id="startButton">Start Simulation</button></a> 
+       </section>
+
+       <section id="Simulation">
+        <h2>Quiz</h2>
+        <a href = "BoothQuiz.php"><button class="start-button" id="startButton">Start Quiz</button></a> 
+        <section id="Simulation">
+            <h2>Excerise</h2>
+            <a href = "BoothEx.php"><button class="start-button" id="startButton">Start Excerise</button></a> 
+       <br><br>
 
         
     </main>

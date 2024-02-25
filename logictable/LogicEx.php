@@ -8,39 +8,16 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url("../images/9504928_26768.jpg") no-repeat center center fixed;
-            background-size: 100% 100%;
-        }
-
-        header {
-            display: flex;
-            background-color: #971426;
-            padding: 20px;
-            color: #ffffff;
-            width: 100%;
-            box-sizing: border-box;
-            border-bottom: 1px solid white;
-        }
-
-        header h4 {
-            margin: auto;
-            text-align: center;
-        }
-
-        header a{
-            text-decoration: none;
-            font-weight: bold;
-            color: #ffffff;
+            background-color: #f0f0f0;
         }
 
         #container {
             max-width: 800px;
-            margin: 10px auto;
+            margin: 0 auto;
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.95);
         }
 
         h1 {
@@ -70,8 +47,6 @@
 
         #submit, #nextQuestion {
             font-size: 16px;
-            margin-top: 10px;
-            margin-right: 10px;
             padding: 8px 16px;
             background-color: #0074d9;
             color: #fff;
@@ -80,31 +55,31 @@
             cursor: pointer;
         }
 
-        #truthTable {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        #truthTable th {
+        th, td {
             border: 1px solid #ccc;
             padding: 8px;
             text-align: center;
+        }
+
+        th {
             background-color: #333;
             color: #fff;
         }
-
-        #table1 td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: center;
-        }
-
 
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
 
+        .gate-container {
+            position: relative;
+            display: inline-block;
+        }
 
         .gate {
             width: 100px;
@@ -118,47 +93,43 @@
             font-weight: bold;
         }
 
-        
-    #sim table{
-        height: 100px;
-    }
+        .input-circle {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+        }
 
-    #tab th,td {
-        border: 0px solid #ccc;
-        background-color: #ffffff;
-        width: 10px;
-    }
+        .input-circle.input-1 {
+            left: -10px;
+        }
 
-        .T{
-        display: flex;
-        margin: 20px auto;
-    }
+        .output-circle {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            bottom: 0;
+            right: -10px;
+        }
 
-    #sim{
-        width: fit-content;
-        display: none;
-        padding: 20px;
-        border: 1px solid #ccc;
-        margin: auto;
-    }
+        .correct {
+            color: green;
+        }
 
         .incorrect {
             color: red;
-        }
-
-        .correct{
-            color: green;
         }
     </style>
     <title>Logic Gates Exercise</title>
 </head>
 <body>
-<header>
-        <a href="../logictable/LogicTheo.php" class="back-button">Back</a>
-        <h4>Logic Gates Excerise</h4>
-        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
-    </header>
-    <main>
     <div id="container">
         <h1>Logic Gates Exercise</h1>
 
@@ -178,10 +149,10 @@
         </select>
 
         <label for="output">Calculated Output:</label>
-        <input type="number" id="output" min="0" max="1"><br>
+        <input type="number" id="output" min="0" max="1" placeholder="Enter 0 or 1">
 
         <button id="submit" onclick="checkAnswer()">Submit</button>
-        <button id="nextQuestion" onclick="generateRandomValues(true)">Next Question</button>
+        <button id="nextQuestion" onclick="generateRandomValues()">Next Question</button>
 
         <table id="truthTable">
             <thead>
@@ -194,60 +165,13 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody id="table1"></tbody>
+            <tbody></tbody>
         </table>
 
-        <div class = "T">
-    <div id ="sim"></div>
-    </div>
+        <div id="gateContainer"></div>
 
         <script>
-                        function gatesdisplay1(A,B,Output,g1){
-                if(g1 == 'not'){
-                    sim.innerHTML = `        <table id="tab">
-            <tr>
-                <th rowspan="3"><p id="A1" style="padding-top: 0px;">${A}</p></th>
-                <th rowspan="3"><img id ="img1" src ="../images/${g1}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
-                <th rowspan="3"><p id="out1" style="padding-top: 0px;">${Output}</p></th>
-            </tr>
-        </table>`;
-
-        var A1 = document.getElementById('A1');
-                var out1 = document.getElementById('out1');
-
-                colorchange(A,A1);
-                colorchange(Output,out1);
-
-                }
-                else{
-                sim.innerHTML = `<table id="tab">
-            <tr>
-                <th rowspan="1"><p id="A1" style="padding-top: 20px;">${A}</p></th>
-                <th rowspan="3"><img id ="img1" src ="../images/${g1}.png" height="150px" width="250px" style="margin-right: 5x;"></th>
-                <th rowspan="3"><p id="out1" style="padding-top: 0px;">${Output}</p></th>
-            </tr>
-            <tr>
-                <th><p id="B1" style="padding-top: 10px;">${B}</p></th>
-            </tr>
-            <tr>
-                <th style="-ms-user-select: none;user-select: none;color: white;">1</th>
-            </tr>
-
-        </table>`;
-
-        var A1 = document.getElementById('A1');
-                var B1 = document.getElementById('B1');
-                var out1 = document.getElementById('out1');
-
-                colorchange(A,A1);
-                colorchange(B,B1);
-                colorchange(Output,out1);
-        }
-
-               
-
-            }
-            function generateRandomValues(A) {
+            function generateRandomValues() {
                 const randomInputA = Math.floor(Math.random() * 2);
                 const randomInputB = Math.floor(Math.random() * 2);
                 const randomGateIndex = Math.floor(Math.random() * 5);
@@ -257,117 +181,107 @@
                 document.getElementById('inputA').value = randomInputA;
                 document.getElementById('inputB').value = randomInputB;
                 document.getElementById('gateSelector').value = randomGate;
+                document.getElementById('output').value = '';
 
-                if(A){
-                sim.style.display = 'none';
-                document.getElementById('table1').innerHTML = ``;
+                document.getElementById('gateContainer').innerHTML = '';
+
+                switch (randomGate) {
+                    case 'and':
+                        document.getElementById('gateContainer').innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate">AND</div>
+                                <div class="input- input-1"></div>
+                                <div class="input- input-2"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'or':
+                        document.getElementById('gateContainer').innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate">OR</div>
+                                <div class="input- input-1"></div>
+                                <div class="input- input-2"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'not':
+                        document.getElementById('gateContainer').innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate">NOT</div>
+                                <div class="input- input-1"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    case 'nor':
+                        document.getElementById('gateContainer').innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate">NOR</div>
+                            </div>
+                        `;
+                        break;
+                    case 'xor':
+                        document.getElementById('gateContainer').innerHTML = `
+                            <div class="gate-container">
+                                <div class="gate">XOR</div>
+                                <div class="input- input-1"></div>
+                                <div class="input- input-2"></div>
+                                <div class="output-"></div>
+                            </div>
+                        `;
+                        break;
+                    default:
+                        break;
                 }
-
             }
 
-            var count = 0;
-
             function checkAnswer() {
-                var inputValA = parseInt(document.getElementById('inputA').value);
-                var inputValB = parseInt(document.getElementById('inputB').value);
-                var inputValA1;
-                var inputValB1;
-                var table1 = document.getElementById('table1');
-                var selectedGate = document.getElementById('gateSelector').value;
-                
-
-                if(inputValA1==1){
-                    inputValA1 = true;
-                }
-
-                else{
-                    inputValA1 = false;
-                }
-
-                if(inputValB1==1){
-                    inputValB1 = true;
-                }
-
-                else{
-                    inputValB1 = false;
-                }
+                const inputValA = parseInt(document.getElementById('inputA').value);
+                const inputValB = parseInt(document.getElementById('inputB').value);
+                const selectedGate = document.getElementById('gateSelector').value;
+                const userOutput = parseInt(document.getElementById('output').value);
 
                 let correctOutput = false;
-                let correctOutput1 = 0;
 
                 switch (selectedGate) {
                     case 'and':
-                        correctOutput = (inputValA1 && inputValB1);
+                        correctOutput = inputValA && inputValB;
                         break;
-                        case 'or':
-                            correctOutput = (inputValA1 || inputValB1);
+                    case 'or':
+                        correctOutput = inputValA || inputValB;
                         break;
-                        case 'not':
-                            correctOutput = !inputValA1;
+                    case 'not':
+                        correctOutput = !inputValA;
                         break;
-                        case 'nor':
-                            correctOutput = !(inputValA1 || inputValB1);
+                    case 'nor':
+                        correctOutput = !(inputValA || inputValB);
                         break;
-                        case 'xor':
-                            correctOutput = ((inputValA1 || inputValB1) && !(inputValA1 && inputValB1));
+                    case 'xor':
+                        correctOutput = (inputValA || inputValB) && !(inputValA && inputValB);
                         break;
                     default:
                         break;
                 }
 
-                if(correctOutput){
-                    correctOutput1 = 1;
-                }
-
-                else{
-                    correctOutput1 = 0;
-                }
-
-                var userOutput = parseInt(document.getElementById('output').value);
-
-                
-                if(!(isNaN(userOutput))){
-                    sim.style.display = 'none';
-
-                    gatesdisplay1(inputValA,inputValB,correctOutput1,selectedGate);
                 const newRow = document.createElement('tr');
-                if(selectedGate == 'not'){
-                    inputValB = '-';
-                }
                 newRow.innerHTML = `
                     <td>${inputValA}</td>
                     <td>${inputValB}</td>
                     <td>${selectedGate.toUpperCase()}</td>
                     <td>${correctOutput ? 1 : 0}</td>
                     <td>${userOutput}</td>
-                    <td class="${correctOutput1 === userOutput ? 'correct' : 'incorrect'}">${correctOutput1 === userOutput ? 'Correct' : 'Incorrect'}</td>
+                    <td class="${correctOutput === userOutput ? 'correct' : 'incorrect'}">${correctOutput === userOutput ? 'Correct' : 'Incorrect'}</td>
                 `;
-                table1.appendChild(newRow);
-                generateRandomValues(false);
-                count+=1;
+                document.querySelector('#truthTable tbody').appendChild(newRow);
 
-                }
-
-                if(count>10){
-                    table1.removeChild(table1.firstChild);
-                }
+                generateRandomValues();
             }
 
-            function colorchange(Aval,A){
-
-
-if(Aval == 1){
-    A.style.color = "green";
-}
-else{
-    A.style.color = "red";
-}
-
-}
-
-            generateRandomValues(true);
+            // Initialize with the first random question
+            generateRandomValues();
         </script>
     </div>
-    </main>
 </body>
 </html>

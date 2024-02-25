@@ -34,6 +34,5 @@ include('../databaseinfo/database.php');
             }
         
     }
-    mysqli_close($conn);
 
 ?>
