@@ -5,11 +5,10 @@
  body {
  font-family: Arial, sans-serif;
  margin: 0px auto;
- padding: 10px;
+ padding: 0px;
  background: url("../images/sim.jpg") no-repeat center center fixed;
  background-size: cover;
  justify-content: center;
- display: flex;
  align-items: center;
  }
  
@@ -105,10 +104,44 @@ width: 1000px;
  margin: auto;
  }
 
+ 
+ main {
+            font-family: Helvetica, sans-serif;
+            align-items: center;
+            margin: auto;
+            max-width: 1000px;
+        }
+
+        header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
 
     </style>
 </head>
 <body>
+<header>
+        <a href="../restoring/RestTheo.php" class="back-button">Back</a>
+        <h4>Restoring Division Algorithm Simulation</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+    <main>
     <div id="container">
         <h1>Restoring Division Algorithm Simulation</h1>
         <h2>Enter the numbers to be divided in decimal format.</h2>
@@ -228,6 +261,20 @@ function restoring(M,Q){
            } else {
                break;
            }
+       }
+       n=0; var count1=1;
+       while (true) {
+           b = po(n);
+           if (M >= b) {
+               n += 1;
+               count1 += 1;
+           } else {
+               break;
+           }
+       }
+
+       if(count<count1){
+        count=count1;
        }
   
        b = po(count - 1);
@@ -459,7 +506,7 @@ back.addEventListener('click', async () => {
 });
        
     </script>
-    </div>
+    </div></main>
 </body>
 
 </html>

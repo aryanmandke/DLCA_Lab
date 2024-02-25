@@ -53,7 +53,28 @@
         width: 50px;
         text-align: center;
     }
-    
+
+    header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid white;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
     .Q p{
         padding-left: 10px;
         padding-right: 10px;
@@ -157,6 +178,12 @@
     </style>
 </head>
 <body>
+<header>
+        <a href="../booth/BoothTheo.php" class="back-button">Back</a>
+        <h4>Booth's Algorithm Excerise</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+    <main>
     <div id="container">
         <h1>Booth's Algorithm Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
@@ -716,6 +743,7 @@
         });
         </script>
     </div>
+    </main>
 </body>
 
 </html>

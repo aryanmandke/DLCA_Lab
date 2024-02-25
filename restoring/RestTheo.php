@@ -15,22 +15,38 @@
             line-height: 1.6;
         }
 
+     
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             background-color: #971426; 
             width: 100%;
             padding: 20px;
             color: #ffffff;
+            position: fixed;
+            top: 0;
+            height: 30px;
+        } 
+        .back-button{
+            text-align: left;
+            font-size: medium;
+            margin-right: 50px;
+
+
         }
-
-
         header a{
-            text-decoration: none;
-            font-weight: bold;
+            margin: 15px;
             color: #ffffff;
+            text-decoration: none;
+            
+            padding: 5px;
+            transition: all 0.4s;
         }
+        a:hover{
+           
+            border-radius: 5px;
+            font-size: 120%;
+        } 
 
         main {
             width: 80%;
@@ -54,6 +70,7 @@
             text-align: left;
             flex-direction: column;
             align-items: flex-start;
+            margin-bottom: 20px;
         }
 
         #flowchart h2 {
@@ -95,16 +112,27 @@
             margin-left: 13%;
             margin-top: 2%;
         }
-
+        .Dhruv{
+            margin-top: 100px;
+        }
+        .Aryan{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <a href="../interface/List.php" class="back-button">Back</a><h1>Experiment 3: Restoring Division Algorithm</h1> 
-        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white" >Back</a>
+<header class="Nav">
+        <a href="../interface/List.php" class="back-button">Back</a>
+        <a href="Restoring.php" >Simulation</a>
+        <a href="RestoringEx.php" >Exercise</a>
+        <a href="RestoringQuiz.php" >Quiz</a>
     </header>
 
     <main>
+    <div class="Dhruv">
+            <div class="Aryan">
+                <h1>Experiment 3: Restoring Division Algorithm</h1> 
+            </div> 
         <section id="aim">
             <h2>Aim</h2>
             <p>The aim of the restoring division algorithm is to efficiently compute the division of two binary numbers (the dividend and the divisor) while determining both the quotient and remainder. This division process is crucial in various computational tasks, especially in computer arithmetic and digital circuit design.</p>
@@ -157,17 +185,6 @@
            <img src="https://lh6.googleusercontent.com/XDWSDU9_TdayNGKCz_-_levm-gCVGI8pDMbrqDhkUD-npMA98ICUBRh5-09hB58gHzFTQg-EhJBx4yVgDwgcl6DtnCp0n7ufePpAsoac5MgsxibJpTcP4zu_wzq8ngd1zP2UZCE" width = "75%" alt = "Flowchart">
            </section>
 
-           <section id="Simulation">
-            <h2>Simulation</h2>
-            <a href = "Restoring.php"><button class="start-button" id="startButton">Start Simulation</button></a> 
-       </section>
-       <section id="Simulation">
-        <h2>Quiz</h2>
-        <a href = "RestoringQuiz.php"><button class="start-button" id="startButton">Start Quiz</button></a> 
-        <section id="Simulation">
-            <h2>Excerise</h2>
-            <a href = "RestoringEx.php"><button class="start-button" id="startButton">Start Excerise</button></a> 
-       <br><br>
     </main>
 </body>
 

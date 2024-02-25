@@ -17,21 +17,44 @@
 
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             background-color: #971426; 
             width: 100%;
             padding: 20px;
             color: #ffffff;
+            position: fixed;
+            top: 0;
+            height: 30px;
+        } 
+        .back-button{
+            text-align: left;
+            font-size: medium;
+            margin-right: 50px;
+
+
         }
 
+        a:hover{
+           
+           border-radius: 5px;
+           font-size: 120%;
+       } 
 
         header a{
-            text-decoration: none;
-            font-weight: bold;
+            margin: 15px;
             color: #ffffff;
+            text-decoration: none;
+            
+            padding: 5px;
+            transition: all 0.4s;
         }
 
+        .Dhruv{
+            margin-top: 100px;
+        }
+        .Aryan{
+            text-align: center;
+        }
 
         main {
             width: 80%;
@@ -55,6 +78,7 @@
             text-align: left;
             flex-direction: column;
             align-items: flex-start;
+            margin-bottom: 20px;
         }
 
         #flowchart h2 {
@@ -68,44 +92,26 @@
             margin-left: 13%;
         }
 
-        #Simulation button {
-            background-color: #971426;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 18px;
-            width: 75%;
-            max-width: 100%;
-            cursor: pointer;
-            margin-left: 13%;
-            margin-top: 2%;
-        }
 
-        #Simulation button:hover {
-            background-color: white;
-            border: 1px solid red;
-            color: red;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 18px;
-            width: 75%;
-            max-width: 100%;
-            cursor: pointer;
-            margin-left: 13%;
-            margin-top: 2%;
-        }
+
+        
 
 
     </style>
 </head>
 <body>
-    <header>        
-        <a href="../interface/List.php" class="back-button">Back</a><h1>Experiment 4: Non-Restoring Division Algorithm</h1> 
-        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white" >Back</a>
+<header class="Nav">
+        <a href="../interface/List.php" class="back-button">Back</a>
+        <a href="NonRestoring.php" >Simulation</a>
+        <a href="NonRestoringEx.php" >Exercise</a>
+        <a href="NonRestoringQuiz.php" >Quiz</a>
     </header>
 
     <main>
+    <div class="Dhruv">
+            <div class="Aryan">
+                <h1>Experiment 4: Non-Restoring Division Algorithm</h1> 
+            </div> 
         <section id="aim">
             <h2>Aim</h2>
             <p>The aim of the non-restoring division algorithm is to perform integer division without restoring a partial remainder. It efficiently finds the quotient and remainder through iterative subtractions and comparisons between the dividend and divisor, aiming to achieve faster and less hardware-intensive division operations compared to other algorithms.</p>
@@ -155,16 +161,7 @@
            <img src="../images/flowchart/Flow-Chart-for-Non-Restoring-division.png" width = "70%" alt = "Flowchart">
            </section>
 
-           <section id="Simulation">
-            <h2>Simulation</h2>
-            <a href = "NonRestoring.php"><button class="start-button" id="startButton">Start Simulation</button></a> 
-       </section> <section id="Simulation">
-        <h2>Quiz</h2>
-        <a href = "NonRestoringQuiz.php"><button class="start-button" id="startButton">Start Quiz</button></a> 
-        <section id="Simulation">
-            <h2>Excerise</h2>
-            <a href = "NonRestoringEx.php"><button class="start-button" id="startButton">Start Excerise</button></a> 
-       <br><br>
+   
 
         
     </main>

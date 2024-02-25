@@ -19,7 +19,7 @@
             align-items: center;
             margin: auto;
             max-width: 800px;
-            /* Adjusted width for the main container */
+  
         }
 
         header {
@@ -44,18 +44,18 @@
 
         .quiz-container {
             width: 100%;
-            /* Adjusted width to 100% for better responsiveness */
+   
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 5px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             text-align: left;
-            /* Adjusted text alignment to left */
+
             margin: auto;
             height: fit-content;
             margin-bottom: 30px;
             max-width: 600px;
-            /* Adjusted max-width for the main container */
+
         }
 
         .quiz-container h2 {
@@ -63,9 +63,8 @@
         }
 
         .quiz-container p {
-            font-size: 16px; /* Adjusted font size to make it consistent */
+            font-size: 16px; 
             margin-bottom: 10px;
-            /* Added margin for better spacing */
         }
 
         .logo {
@@ -94,12 +93,10 @@
             margin-left: 10px;
             text-align: left;
             margin-top: 0;
-            /* Removed margin-top for better alignment */
         }
 
         .quiz-container ol li {
             margin-bottom: 10px;
-            /* Added margin for better spacing between options */
         }
 
         .submit-button {

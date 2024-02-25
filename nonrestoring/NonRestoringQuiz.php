@@ -203,8 +203,8 @@
 
 <body>
     <header>
-        <a href="../restoring/RestTheo.php" class="back-button">Back</a>
-        <h4>Restoring Division Algorithm Quiz</h4>
+        <a href="../nonrestoring/NonRestoTheo.php" class="back-button">Back</a>
+        <h4>Non-Restoring Division Algorithm Quiz</h4>
         <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
     </header>
 

@@ -114,6 +114,35 @@
         align-items: center;
         align-self: center;
     }
+
+    
+    main {
+            font-family: Helvetica, sans-serif;
+            align-items: center;
+            margin: auto;
+            max-width: 1000px;
+        }
+
+        header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid white;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
     
     input[type = 'text'],input[type = 'number'],input[type = 'number']{
         width:80%;
@@ -161,6 +190,12 @@
     </style>
 </head>
 <body>
+<header>
+        <a href="../restoring/RestTheo.php" class="back-button">Back</a>
+        <h4>Restoring Division Algorithm Excerise</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+    <main>
     <div id="container">
         <h1>Restoring Division Algorithm Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
@@ -625,7 +660,7 @@ function restoring(Q,M){
             }
         });
         </script>
-    </div>
+    </div></main>
 </body>
 
 </html>

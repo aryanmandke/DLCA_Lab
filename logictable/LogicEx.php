@@ -12,6 +12,27 @@
             background-size: 100% 100%;
         }
 
+        header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid white;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
         #container {
             max-width: 800px;
             margin: 10px auto;
@@ -132,6 +153,12 @@
     <title>Logic Gates Exercise</title>
 </head>
 <body>
+<header>
+        <a href="../logictable/LogicTheo.php" class="back-button">Back</a>
+        <h4>Logic Gates Excerise</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+    <main>
     <div id="container">
         <h1>Logic Gates Exercise</h1>
 
@@ -338,9 +365,9 @@ else{
 
 }
 
-            // Initialize with the first random question
             generateRandomValues(true);
         </script>
     </div>
+    </main>
 </body>
 </html>

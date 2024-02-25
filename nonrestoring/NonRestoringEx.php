@@ -158,9 +158,36 @@
     tr:nth-child(even){
         background-color: #f2f2f2;
     }
+
+    header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid white;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
+<header>
+        <a href="../nonrestoring/NonRestoTheo.php" class="back-button">Back</a>
+        <h4>Non-Restoring Division Algorithm Quiz</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+<main>
     <div id="container">
         <h1>Non-Restoring Division Algorithm Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
@@ -646,7 +673,7 @@ let Morg = M, Qorg = Q;
             
         }});
         </script>
-    </div>
+    </div></main>
 </body>
 
 </html>

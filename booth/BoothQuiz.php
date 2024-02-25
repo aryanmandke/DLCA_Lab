@@ -549,7 +549,7 @@ function pool(r,c){
             }
             break;
     }
-
+console.log(p);
     return p;
 }
 

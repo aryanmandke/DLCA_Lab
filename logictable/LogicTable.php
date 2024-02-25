@@ -13,11 +13,10 @@
    body {
  font-family: Arial, sans-serif;
  margin: 0px auto;
- padding: 10px;
+ padding: 0px;
  background: url("../images/sim.jpg") no-repeat center center fixed;
  background-size: cover;
  justify-content: center;
- display: flex;
  align-items: center;
  }
     
@@ -160,6 +159,26 @@
         width: 10px;
     }
 
+    header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
     #sim table{
         height: 100px;
     }
@@ -200,6 +219,12 @@
     </style>
 </head>
 <body>
+<header>
+        <a href="../logictable/LogicTheo.php" class="back-button">Back</a>
+        <h4>Logic Gates Simulation</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+    <main>
     <div id="container">
         <h1>Logic Gates Simulation</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
@@ -686,6 +711,6 @@
 
         </script>
     </div>
-</body>
+        </main></body>
 
 </html>

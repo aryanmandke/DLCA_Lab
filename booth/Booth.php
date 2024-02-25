@@ -8,13 +8,34 @@
  body {
  font-family: Arial, sans-serif;
  margin: 0px auto;
- padding: 10px;
+ padding: 0px;
  background: url("../images/sim.jpg") no-repeat center center fixed;
  background-size: cover;
  justify-content: center;
- display: flex;
+ 
  align-items: center;
  }
+
+ header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+ header {
+            display: flex;
+            background-color: #971426;
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        header h4 {
+            margin: auto;
+            text-align: center;
+        }
  
  #container {
 width: 1000px;
@@ -111,6 +132,12 @@ width: 1000px;
 </head>
 
 <body>
+<header>
+        <a href="../booth/BoothTheo.php" class="back-button">Back</a>
+        <h4>Booth's Algorithm Simulation</h4>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white">Back</a>
+    </header>
+    <main>
  <div id="container">
  <h1>Booth's Algorithm Simulation</h1>
  <h2>Enter the numbers to be multiplied in decimal format.</h2>
@@ -553,6 +580,7 @@ width: 1000px;
  });
  </script>
  </div>
+</main>
 </body>
 
 </html>
