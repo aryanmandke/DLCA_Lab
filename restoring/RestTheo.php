@@ -17,13 +17,35 @@
 
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             background-color: #971426; 
             width: 100%;
             padding: 20px;
             color: #ffffff;
+            position: fixed;
+            top: 0;
+            height: 30px;
+        } 
+        .back-button{
+            text-align: left;
+            font-size: medium;
+            margin-right: 50px;
+
+
         }
+        header a{
+            margin: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            
+            padding: 5px;
+            transition: all 0.4s;
+        }
+        a:hover{
+           
+            border-radius: 5px;
+            font-size: 120%;
+        } 
 
 
         header a{
@@ -85,11 +107,17 @@
 </head>
 <body>
     <header>
-        <a href="../interface/List.php" class="back-button">Back</a><h1>Experiment 3: Restoring Division Algorithm</h1> 
-        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white" >Back</a>
-    </header>
-
+        <header class="Nav">
+            <a href="../interface/List.php" class="back-button">Back</a>        
+            <a href="../interface/List.php" >Theory</a>        
+            
+            <a href="Booth.php" >Simulation</a>
+            <a href="BoothEx.php" >Exercise</a>
+            <a href="BoothQuiz.php" >Quiz</a>
+        </header>
+        </header><br><br><br>br
     <main>
+        <h1>Experiment no.3 Restoring Algorithm</h1>
         <section id="aim">
             <h2>Aim</h2>
             <p>The aim of the restoring division algorithm is to efficiently compute the division of two binary numbers (the dividend and the divisor) while determining both the quotient and remainder. This division process is crucial in various computational tasks, especially in computer arithmetic and digital circuit design.</p>
@@ -159,7 +187,6 @@
 
 
 </html>
-
 
 
 
