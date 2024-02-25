@@ -1657,7 +1657,7 @@ function pep(op,data){
         }
 
         var userCnt = data.length;
-        sum = sum/userCnt;
+        sum = sum/4;
 
         const userC = document.querySelector(".style-79");
         const userR = document.querySelector(".style-91");
