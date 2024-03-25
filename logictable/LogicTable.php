@@ -24,6 +24,10 @@
         background-color: #ffffff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
+        float:middle;
+        width:1000px;
+        overflow-y: scroll;
+        max-height: 450px;
     }
     
     h1 {
